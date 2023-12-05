@@ -1,0 +1,70 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #2ecc71;
+}
+
+.register-form {
+    background-color: #fff;
+    padding: 40px; /* Aumenté el espacio interno del formulario */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 400px; /* Aumenté el ancho del formulario */
+    text-align: center;
+}
+
+h2 {
+    color: #333;
+    font-size: 24px; /* Aumenté el tamaño de la fuente del encabezado */
+}
+
+/* Flex container y estilos para el diseño deseado */
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 20px; /* Aumenté el margen inferior del flex container */
+}
+
+.flex-item {
+    flex: 1;
+    margin-right: 10px; /* Aumenté el margen derecho del flex item */
+}
+
+label {
+    display: block;
+    margin-top: 15px; /* Aumenté el margen superior de las etiquetas */
+    color: #666;
+    font-size: 16px; /* Aumenté el tamaño de la fuente de las etiquetas */
+}
+
+input {
+    width: 100%;
+    padding: 10px; /* Aumenté el relleno de los campos de entrada */
+    margin-top: 5px;
+    margin-bottom: 15px; /* Aumenté el margen inferior de los campos de entrada */
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 12px; /* Aumenté el relleno del botón */
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px; /* Aumenté el tamaño de la fuente del botón */
+}
+
+button:hover {
+    background-color: #2980b9;
+}
