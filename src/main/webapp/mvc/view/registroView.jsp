@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -9,7 +8,7 @@
 </head>
 <body>
     <div class="container">
-        <form action="#" method="post" class="register-form">
+        <form action="../controller/controladorRegistro.jsp" method="post" class="register-form">
             <h2>Registro de Usuario</h2>
 
             <!-- Flex container para nombre y apellidos -->
@@ -38,14 +37,35 @@
 
             <!-- Checkbox para atención especial -->
             <label for="specialNeeds">Necesita Atención Especial:</label>
-            <input type="checkbox" id="specialNeeds" name="specialNeeds">
+            <input type="checkbox" id="specialNeeds" name="specialNeeds" value="True">
 
             <!-- Checkbox para administrador -->
             <label for="isAdmin">Es Administrador:</label>
-            <input type="checkbox" id="isAdmin" name="isAdmin">
+            <input type="checkbox" id="isAdmin" name="isAdmin" value="True">
+
+            <!-- Campo de contraseña de administrador -->
+            <div class="admin-password" style="display: none;">
+                <label for="adminPassword">Contraseña de Administrador:</label>
+                <input type="password" id="adminPassword" name="adminPassword">
+            </div>
 
             <button type="submit">Registrarse</button>
+
+            <!-- Enlace para "Ya tengo cuenta" -->
+            <p>¿Ya tienes cuenta? <a href="/Practica3/index.jsp">Iniciar sesión</a></p>
         </form>
     </div>
+
+    <!-- Script JavaScript para manejar la visibilidad del campo de contraseña de administrador -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var isAdminCheckbox = document.getElementById('isAdmin');
+            var adminPasswordDiv = document.querySelector('.admin-password');
+
+            isAdminCheckbox.addEventListener('change', function () {
+                adminPasswordDiv.style.display = isAdminCheckbox.checked ? 'block' : 'none';
+            });
+        });
+    </script>
 </body>
 </html>
