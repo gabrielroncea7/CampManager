@@ -30,9 +30,8 @@
   	<param-value>/WEB-INF/sql.properties</param-value>
   </context-param>
  
-   <error-page>
-      <error-code>404</error-code>
-      <location>/errorPage.jsp</location>
-  </error-page>      
+<error-page>
+    <location>/include/errorPage.jsp</location>
+</error-page>  
   
 </web-app>

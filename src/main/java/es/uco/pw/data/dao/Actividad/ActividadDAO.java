@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import es.uco.pw.business.Actividad.Actividad_DTO;
 import es.uco.pw.business.common.HorarioActividad_DTO;
 import es.uco.pw.business.common.NivelEducativo_DTO;
 import es.uco.pw.data.common.DBConnection;
@@ -25,7 +26,7 @@ public class ActividadDAO {
      * @param nMonitores       Número de monitores.
      * @return                 True si la operación fue exitosa, false en caso contrario.
      */
-    public boolean escribirActividad(String nombre, NivelEducativo_DTO nivelEducativo, HorarioActividad_DTO horarioActividad, Integer nParticipantes, Integer nMonitores) {
+    public static boolean escribirActividad(Actividad_DTO Actividad) {
         DBConnection dbConnection = new DBConnection();
         Connection connection = dbConnection.getConnection();
 
@@ -33,11 +34,11 @@ public class ActividadDAO {
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(escribirActividadQuery);
-            preparedStatement.setString(1, nombre);
-            preparedStatement.setString(2, nivelEducativo.name());
-            preparedStatement.setString(3, horarioActividad.name());
-            preparedStatement.setObject(4, nParticipantes);
-            preparedStatement.setInt(5, nMonitores);
+            preparedStatement.setString(1, Actividad.getNombreActividad());
+            preparedStatement.setString(2, Actividad.getnEducativo().name());
+            preparedStatement.setString(3, Actividad.gethActividad().name());
+            preparedStatement.setObject(4, Actividad.getNumeroParticipantes());
+            preparedStatement.setInt(5, Actividad.getMonitoresNecesarios());
 
             int rowsAffected = preparedStatement.executeUpdate();
             return rowsAffected > 0;
@@ -55,7 +56,7 @@ public class ActividadDAO {
      *
      * @return ResultSet con el resultado de la consulta.
      */
-    public ResultSet listarActividades() {
+    public static ResultSet listarActividades() {
         DBConnection dbConnection = new DBConnection();
         Connection connection = dbConnection.getConnection();
 
@@ -78,7 +79,7 @@ public class ActividadDAO {
      * @param nombre Nombre de la actividad a verificar.
      * @return       True si la actividad existe, false en caso contrario.
      */
-    public boolean existeActividad(String nombre) {
+    public static boolean existeActividad(String nombre) {
         DBConnection dbConnection = new DBConnection();
         Connection connection = dbConnection.getConnection();
 

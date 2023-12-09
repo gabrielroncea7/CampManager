@@ -7,8 +7,12 @@
     <title>Registro de Usuario</title>
 </head>
 <body>
+		<% String msg = (String)request.getParameter("msg"); %>
+    	<% if (msg != null) { %>
+    		<p style="background-color: #ff9999; text-align: center;"><%= msg %></p>
+    	<% } %>
     <div class="container">
-        <form action="../controller/controladorRegistro.jsp" method="post" class="register-form">
+        <form action="../controller/controladorRegistro.jsp" method="POST" class="register-form">
             <h2>Registro de Usuario</h2>
 
             <!-- Flex container para nombre y apellidos -->
@@ -52,7 +56,7 @@
             <button type="submit">Registrarse</button>
 
             <!-- Enlace para "Ya tengo cuenta" -->
-            <p>¿Ya tienes cuenta? <a href="/Practica3/index.jsp">Iniciar sesión</a></p>
+            <p>¿Ya tienes cuenta? <a href="/Practica3">Iniciar sesión</a></p>
         </form>
     </div>
 

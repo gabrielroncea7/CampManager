@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
+import es.uco.pw.business.Asistente.Asistente_DTO;
 import es.uco.pw.data.common.DBConnection;
 import es.uco.pw.data.common.SQLQueries;
 
@@ -24,7 +25,7 @@ public class AsistenteDAO {
      * @param atencionEspecial  Indica si el asistente requiere atención especial.
      * @return                  True si la operación fue exitosa, false en caso contrario.
      */
-    public static boolean escribirAsistente(String nombre, String apellidos, LocalDate fechaNacimiento, boolean atencionEspecial) {
+    public static boolean escribirAsistente(Asistente_DTO AsistenteDTO) {
         // Obtener la conexión desde la clase DBConnection
         DBConnection dbConnection = new DBConnection();
         Connection connection = dbConnection.getConnection();
@@ -35,11 +36,11 @@ public class AsistenteDAO {
         try {
             // Crear una sentencia preparada
             PreparedStatement preparedStatement = connection.prepareStatement(insertAsistentesQuery);
-            preparedStatement.setString(1, nombre);
-            preparedStatement.setString(2, apellidos);
-            Date fechaNacimientoSQL = Date.valueOf(fechaNacimiento);
+            preparedStatement.setString(1, AsistenteDTO.getNombre());
+            preparedStatement.setString(2, AsistenteDTO.getApellidos() );
+            Date fechaNacimientoSQL = Date.valueOf(AsistenteDTO.getFechaNacimiento());
             preparedStatement.setDate(3, fechaNacimientoSQL);
-            preparedStatement.setBoolean(4, atencionEspecial);
+            preparedStatement.setBoolean(4, AsistenteDTO.getNecesitaAtencionEspecial());
 
             // Ejecutar la inserción
             int rowsAffected = preparedStatement.executeUpdate();
@@ -85,7 +86,7 @@ public class AsistenteDAO {
      * @param atencionEspecial  Indica si el asistente requiere atención especial.
      * @return                  True si la operación fue exitosa, false en caso contrario.
      */
-    public static boolean modificarAsistente(int idPersona, String nombre, String apellidos, LocalDate fechaNacimiento, boolean atencionEspecial) {
+    public static boolean modificarAsistente(int idPersona, Asistente_DTO AsistenteDTO) {
         DBConnection dbConnection = new DBConnection();
         Connection connection = dbConnection.getConnection();
 
@@ -93,12 +94,12 @@ public class AsistenteDAO {
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(updateAsistentesQuery);
-            preparedStatement.setString(1, nombre);
-            preparedStatement.setString(2, apellidos);
+            preparedStatement.setString(1, AsistenteDTO.getNombre());
+            preparedStatement.setString(2, AsistenteDTO.getApellidos());
             // Convierte LocalDate a java.sql.Date
-            Date fechaNacimientoSQL = Date.valueOf(fechaNacimiento);
+            Date fechaNacimientoSQL = Date.valueOf(AsistenteDTO.getFechaNacimiento());
             preparedStatement.setDate(3, fechaNacimientoSQL);
-            preparedStatement.setBoolean(4, atencionEspecial);
+            preparedStatement.setBoolean(4, AsistenteDTO.getNecesitaAtencionEspecial());
             preparedStatement.setInt(5, idPersona);
 
             int rowsAffected = preparedStatement.executeUpdate();

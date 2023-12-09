@@ -1,41 +1,43 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page errorPage="include/errorPage.jsp" %>
-<%@ page import="es.uco.pw.data.dao.Usuario.UsuarioDAO" %>
-
-
+<%@page import="es.uco.pw.business.Gestores.GestorUsuarios"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page errorPage="include/errorPage.jsp"%>
+<%@ page
+	import="es.uco.pw.business.Gestores.GestorUsuarios,es.uco.pw.business.Usuario.UsuarioDTO"%>
+<jsp:useBean id="customerBean" scope="session"
+	class="es.uco.pw.data.display.CustomerBean"></jsp:useBean>
 <%
-boolean boolSpecialNeeds;
-boolean boolAdminUser;
-
 String nextPage = "";
 String mensajeNextPage = "";
 
-String nameUser = request.getParameter("name");
-String lastnameUser = request.getParameter("lastname");
-String emailUser = request.getParameter("email");
-String passwordUser = request.getParameter("password");
-String specialNeedsUser = request.getParameter("specialNeeds");
-String isAdminUser = request.getParameter("isAdmin");
+String nombre = request.getParameter("name");
+String apellidos = request.getParameter("lastname");
+String email = request.getParameter("email");
+String password = request.getParameter("password");
+String necesidadesEspeciales = request.getParameter("specialNeeds");
+String Admin = request.getParameter("isAdmin");
 
-if (specialNeedsUser == "True"){
-	boolSpecialNeeds = true;
+boolean boolSpecialNeeds = "True".equals(necesidadesEspeciales);
+boolean boolAdminUser = "True".equals(Admin);
+
+if (nombre == null || apellidos == null || email == null || password == null || nombre == "" || apellidos == "" || email == "" || password == ""
+		) {
+	nextPage = "../view/registroView.jsp";
+	mensajeNextPage ="Campos incompletos";
 } else {
-	boolSpecialNeeds = false;
-}
 
-if (isAdminUser == "True"){
-	boolAdminUser = true;
+UsuarioDTO UsuarioDTO = new UsuarioDTO(nombre, apellidos, email, password, boolAdminUser, boolAdminUser);
+
+if (GestorUsuarios.existeUsuario(UsuarioDTO)) {
+    nextPage = "../view/registroView.jsp";
+    mensajeNextPage = "El email ya existe";
 } else {
-	boolAdminUser = false;
+	GestorUsuarios.escribirUsuario(UsuarioDTO);
+    nextPage = "../../";
+    mensajeNextPage = "Usuario creado correctamente";
 }
-
-UsuarioDAO UsuarioDAO = new UsuarioDAO();
-UsuarioDAO.escribirUsuario(nameUser, lastnameUser, emailUser, passwordUser, boolSpecialNeeds, boolAdminUser);
+}
 %>
-
-<%=nameUser %>
-<%=lastnameUser %>
-<%=emailUser %>
-<%=passwordUser %>
-<%=specialNeedsUser %>
-<%=isAdminUser %>
+<jsp:forward page="<%=nextPage%>">
+	<jsp:param value="<%=mensajeNextPage%>" name="message" />
+</jsp:forward>

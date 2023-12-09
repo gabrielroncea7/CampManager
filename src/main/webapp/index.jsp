@@ -1,29 +1,29 @@
-<jsp:useBean id="userBean" scope="session" class="es.uco.pw.data.display.CustomerBean"></jsp:useBean>
-<%
-	if(userBean.getEmail() != null)
-	{
-		response.sendRedirect(request.getContextPath()+"/usuarioServlet");
-	}
+<%@ page language="java" contentType="text/html;  charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page errorPage="/include/errorPage.jsp" %>
 
-%>
+<jsp:useBean id="userBean" scope="session" class="es.uco.pw.data.display.CustomerBean"></jsp:useBean>
+
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet"  href="css/Login.css">
-    <title>Iniciar Sesión</title>
+    <title>Iniciar SesiÃ³n</title>
 </head>
 <body>
     <div class="login-container">
         <form action="#" method="post" class="login-form">
-            <h2>Iniciar Sesión</h2>
-            <label for="username">Usuario:</label>
-            <input type="text" id="username" name="username" required>
-            <label for="password">Contraseña:</label>
+            <h2>Iniciar SesiÃ³n</h2>
+            <label for="email">Correo:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="password">ContraseÃ±a:</label>
             <input type="password" id="password" name="password" required>
-            <button type="submit">Iniciar Sesión</button>
-            <p class="register-link">¿No tienes una cuenta? <a href="mvc/view/registroView.jsp">Regístrate aquí</a></p>
+            <button type="submit">Iniciar SesiÃ³n</button>
+            <p class="register-link">Â¿No tienes una cuenta? <a href="mvc/view/registroView.jsp">RegÃ­strate aquÃ­</a></p>
         </form>
     </div>
 </body>

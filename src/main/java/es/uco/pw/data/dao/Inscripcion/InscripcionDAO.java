@@ -20,8 +20,8 @@ import es.uco.pw.data.common.SQLQueries;
 public class InscripcionDAO {
     LocalDate fechaActual = LocalDate.now(); // Fecha actual del sistema
     Date fechaActualSQL = Date.valueOf(fechaActual);
-    DateTimeFormatter DateFormato = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-    Scanner scanner;
+    static DateTimeFormatter DateFormato = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    static Scanner scanner;
 
     /**
      * Crea una nueva inscripción para un asistente en un campamento.
@@ -31,7 +31,7 @@ public class InscripcionDAO {
      * @param precio            Precio de la inscripción.
      * @return                  True si la inscripción fue creada con éxito, false en caso contrario.
      */
-    public boolean crearInscripcion(int idAsistente, int idCampamento, double precio) {
+    public static boolean crearInscripcion(int idAsistente, int idCampamento, double precio) {
         DBConnection dbConnection = new DBConnection();
         Connection connection = dbConnection.getConnection();
         // Realizar la verificación de disponibilidad del campamento
@@ -77,7 +77,7 @@ public class InscripcionDAO {
      *
      * @return ResultSet con la información de las inscripciones.
      */
-    public ResultSet listarInscripciones() {
+    public static ResultSet listarInscripciones() {
         DBConnection dbConnection = new DBConnection();
         Connection connection = dbConnection.getConnection();
 
@@ -101,7 +101,7 @@ public class InscripcionDAO {
      * @param inscripcionCompleta   Indica si la inscripción es completa.
      * @return                      Precio calculado de la inscripción.
      */
-    public double calcularPrecioInscripcion(int IdCampamento, boolean inscripcionCompleta) {
+    public static double calcularPrecioInscripcion(int IdCampamento, boolean inscripcionCompleta) {
         double costoActividades = 0;
 
         DBConnection dbConnection = new DBConnection();
@@ -135,7 +135,7 @@ public class InscripcionDAO {
      * @param idCampamento  ID del campamento.
      * @return              True si es posible, false en caso contrario.
      */
-    private boolean calcularRegistro(int idCampamento) {
+    public static boolean calcularRegistro(int idCampamento) {
         // Obtener la fecha actual del sistema
         LocalDate fechaActual = LocalDate.now();
         Date fechaInicioDate = null;
@@ -186,7 +186,7 @@ public class InscripcionDAO {
      *
      * @return ResultSet con la información de los campamentos.
      */
-    public ResultSet listarCampamentos() {
+    public static ResultSet listarCampamentos() {
         DBConnection dbConnection = new DBConnection();
         Connection connection = dbConnection.getConnection();
 
@@ -210,7 +210,7 @@ public class InscripcionDAO {
      * @return ResultSet con la información de las inscripciones.
      */
     
-	public Boolean eliminarInscripcion(int idInscripcion) {
+	public static Boolean eliminarInscripcion(int idInscripcion) {
 	    DBConnection dbConnection = new DBConnection();
 	    Connection connection = dbConnection.getConnection();
 
@@ -235,7 +235,7 @@ public class InscripcionDAO {
 		return false;
 	}
 	
-	public boolean ComprobarInscripcion(int Id_asistente, int Id_Campamento) {
+	public static boolean ComprobarInscripcion(int Id_asistente, int Id_Campamento) {
 		DBConnection dbConnection = new DBConnection();
 	    Connection connection = dbConnection.getConnection();
     // Realiza una consulta SQL para verificar si la asociación ya existe.

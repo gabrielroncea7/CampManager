@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import es.uco.pw.business.Monitor.Monitor_DTO;
 import es.uco.pw.data.common.DBConnection;
 import es.uco.pw.data.common.SQLQueries;
 
@@ -21,7 +22,7 @@ public class MonitorDAO {
      * @param edEspecial  Indica si el monitor tiene educación especial.
      * @return            True si la escritura fue exitosa, false en caso contrario.
      */
-    public boolean escribirMonitor(String nombre, String apellidos, boolean edEspecial) {
+    public static boolean escribirMonitor(Monitor_DTO Monitor) {
         DBConnection dbConnection = new DBConnection();
         Connection connection = dbConnection.getConnection();
 
@@ -29,9 +30,9 @@ public class MonitorDAO {
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(escribirMonitorQuery);
-            preparedStatement.setString(1, nombre);
-            preparedStatement.setString(2, apellidos);
-            preparedStatement.setBoolean(3, edEspecial);
+            preparedStatement.setString(1, Monitor.getNombre());
+            preparedStatement.setString(2, Monitor.getApellidos());
+            preparedStatement.setBoolean(3, Monitor.getEducadorespecial());
 
             int rowsAffected = preparedStatement.executeUpdate();
             return rowsAffected > 0;

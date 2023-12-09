@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
+import es.uco.pw.business.Campamento.Campamento_DTO;
 import es.uco.pw.business.common.NivelEducativo_DTO;
 import es.uco.pw.data.common.DBConnection;
 import es.uco.pw.data.common.SQLQueries;
@@ -23,7 +24,7 @@ public class CampamentoDAO {
      * @param monitorAsignado    Indica si ya hay un monitor asignado al campamento.
      * @return                   True si la operación fue exitosa, false en caso contrario.
      */
-    public boolean escribirCampamento(LocalDate fechaInicio, LocalDate fechaFin, NivelEducativo_DTO nivelEducativo, int numeroMaxAsistentes, boolean monitorAsignado) {
+    public static boolean escribirCampamento(Campamento_DTO Campamento) {
         // Obtener la conexión desde la clase DBConnection
         DBConnection dbConnection = new DBConnection();
         Connection connection = dbConnection.getConnection();
@@ -34,13 +35,13 @@ public class CampamentoDAO {
         try {
             // Crear una sentencia preparada
             PreparedStatement preparedStatement = connection.prepareStatement(escribirCampamentoQuery);
-            Date fechaSQL = Date.valueOf(fechaInicio);
+            Date fechaSQL = Date.valueOf(Campamento.getFechaInicio());
             preparedStatement.setDate(1, fechaSQL);
-            fechaSQL = Date.valueOf(fechaFin);
+            fechaSQL = Date.valueOf(Campamento.getFechaFin());
             preparedStatement.setDate(2, fechaSQL);
-            preparedStatement.setString(3, nivelEducativo.name());
-            preparedStatement.setInt(4, numeroMaxAsistentes);
-            preparedStatement.setBoolean(5, monitorAsignado);
+            preparedStatement.setString(3, Campamento.getNivelEducativo().name());
+            preparedStatement.setInt(4, Campamento.getNumeroMaximoAsistentes());
+            preparedStatement.setBoolean(5, Campamento.isMonitorAsignado());
 
             // Ejecutar la inserción
             int rowsAffected = preparedStatement.executeUpdate();
@@ -59,7 +60,7 @@ public class CampamentoDAO {
      *
      * @return ResultSet con la lista de campamentos.
      */
-    public ResultSet listarCampamentos() {
+    public static ResultSet listarCampamentos() {
         DBConnection dbConnection = new DBConnection();
         Connection connection = dbConnection.getConnection();
 
@@ -81,7 +82,7 @@ public class CampamentoDAO {
      *
      * @return ResultSet con la lista de campamentos en español.
      */
-    public ResultSet listarCampamentosES() {
+    public static ResultSet listarCampamentosES() {
         DBConnection dbConnection = new DBConnection();
         Connection connection = dbConnection.getConnection();
 

@@ -3,52 +3,21 @@ package es.uco.pw.business.Usuario;
 
 public class UsuarioDTO {
 
-	private int idUsuario;
-
-	private String login;
-	private String password;
 	private String nombre;
 	private String apellidos;
 	private String email;
-	private String contrasena;
+	private String password;
 	private boolean necesidadesEspeciales;
-	private int rol;
+	private boolean Admin;
 	
-	public UsuarioDTO(int idUsuario, String login, String password, String nombre, String apellidos, String email,
-			String contrasena, boolean necesidadesEspeciales, int rol) {
-		this.idUsuario = idUsuario;
-		this.login = login;
-		this.password = password;
+	public UsuarioDTO(String nombre, String apellidos, String email, String password, boolean necesidadesEspeciales,
+			boolean admin) {
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.email = email;
-		this.contrasena = contrasena;
-		this.necesidadesEspeciales = necesidadesEspeciales;
-		this.rol = rol;
-	}
-
-	public int getIdUsuario() {
-		return idUsuario;
-	}
-
-	public void setIdUsuario(int idUsuario) {
-		this.idUsuario = idUsuario;
-	}
-
-	public String getLogin() {
-		return login;
-	}
-
-	public void setLogin(String login) {
-		this.login = login;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
 		this.password = password;
+		this.necesidadesEspeciales = necesidadesEspeciales;
+		Admin = admin;
 	}
 
 	public String getNombre() {
@@ -75,12 +44,12 @@ public class UsuarioDTO {
 		this.email = email;
 	}
 
-	public String getContrasena() {
-		return contrasena;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setContrasena(String contrasena) {
-		this.contrasena = contrasena;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public boolean isNecesidadesEspeciales() {
@@ -91,13 +60,14 @@ public class UsuarioDTO {
 		this.necesidadesEspeciales = necesidadesEspeciales;
 	}
 
-	public int getRol() {
-		return rol;
+	public boolean isAdmin() {
+		return Admin;
 	}
 
-	public void setRol(int rol) {
-		this.rol = rol;
+	public void setAdmin(boolean admin) {
+		Admin = admin;
 	}
+	
 
 	
 	

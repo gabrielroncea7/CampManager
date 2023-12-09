@@ -18,12 +18,13 @@ public class Campamento_DTO {
     }
 
     // Constructor parametrizado
-    public Campamento_DTO(int id, LocalDate fechaInicio, LocalDate fechaFin, NivelEducativo_DTO nivelEducativo, int numeroMaximoAsistentes) {
+    public Campamento_DTO(int id, LocalDate fechaInicio, LocalDate fechaFin, NivelEducativo_DTO nivelEducativo, int numeroMaximoAsistentes,boolean monitorAsignado) {
         this.id = id;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         this.nivelEducativo = nivelEducativo;
         this.numeroMaximoAsistentes = numeroMaximoAsistentes;
+        this.monitorAsignado = monitorAsignado;
     }
 
 
@@ -69,7 +70,15 @@ public class Campamento_DTO {
     }
 
 
-	 /**
+	 public boolean isMonitorAsignado() {
+		return monitorAsignado;
+	}
+
+	public void setMonitorAsignado(boolean monitorAsignado) {
+		this.monitorAsignado = monitorAsignado;
+	}
+
+	/**
      * Método toString que imprime la información del campamento.
      *
      * @return Cadena de texto que representa la información del campamento.
