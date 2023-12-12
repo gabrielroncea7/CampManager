@@ -7,12 +7,18 @@
     <title>Registro de Usuario</title>
 </head>
 <body>
-		<% String msg = (String)request.getParameter("msg"); %>
-    	<% if (msg != null) { %>
-    		<p style="background-color: #ff9999; text-align: center;"><%= msg %></p>
-    	<% } %>
+
     <div class="container">
         <form action="../controller/controladorRegistro.jsp" method="POST" class="register-form">
+                    <%-- Muestra el mensaje si está presente --%>
+			<%
+			    String message = request.getParameter("message");
+			    if (message != null && !message.isEmpty()) {
+			%>
+			    <p class="message"><%= message %></p>
+			<%
+			    }
+			%>
             <h2>Registro de Usuario</h2>
 
             <!-- Flex container para nombre y apellidos -->

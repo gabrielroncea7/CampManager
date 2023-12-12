@@ -69,3 +69,12 @@ button {
 button:hover {
     background-color: #2980b9;
 }
+
+.message {
+    background-color: #2ecc71;
+    color: #fff; /* Texto en color blanco */
+    padding: 10px;
+    border-radius: 4px;
+    margin: 15px 0; /* Ajusta el margen arriba y abajo */
+    text-align: center; /* Centra el texto */
+}

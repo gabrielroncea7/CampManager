@@ -1,10 +1,7 @@
-<%@ page language="java" contentType="text/html;  charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page errorPage="/include/errorPage.jsp" %>
 
 <jsp:useBean id="userBean" scope="session" class="es.uco.pw.data.display.CustomerBean"></jsp:useBean>
-
-
 
 <!DOCTYPE html>
 <html lang="es">
@@ -17,6 +14,15 @@
 <body>
     <div class="login-container">
         <form action="#" method="post" class="login-form">
+                    <%-- Muestra el mensaje si está presente --%>
+			<%
+			    String message = request.getParameter("message");
+			    if (message != null && !message.isEmpty()) {
+			%>
+			    <p class="message"><%= message %></p>
+			<%
+			    }
+			%>
             <h2>Iniciar Sesión</h2>
             <label for="email">Correo:</label>
             <input type="email" id="email" name="email" required>
@@ -28,7 +34,3 @@
     </div>
 </body>
 </html>
-
-
-
-
