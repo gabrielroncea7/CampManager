@@ -13,7 +13,7 @@
 </head>
 <body>
     <div class="login-container">
-        <form action="#" method="post" class="login-form">
+        <form action="mvc/controller/controladorLogin.jsp" method="post" class="login-form">
                     <%-- Muestra el mensaje si está presente --%>
 			<%
 			    String message = request.getParameter("message");

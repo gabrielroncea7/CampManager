@@ -15,6 +15,10 @@ public class GestorUsuarios {
 	    {
 	    	return UsuarioDAO.escribirUsuario(usuarioDTO);
 	    }
-		
+	    public static UsuarioDTO listarUsuario(String emailUser, String passUser) {
+	    	
+	    	return UsuarioDAO.listarUsuario(emailUser, passUser);
+	    }
+	    
 
 }

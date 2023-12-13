@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Properties;
 
 import es.uco.pw.business.Usuario.UsuarioDTO;
@@ -41,9 +42,11 @@ public class UsuarioDAO {
             preparedStatement.setString(1, usuarioDTO.getNombre());
             preparedStatement.setString(2, usuarioDTO.getApellidos());
             preparedStatement.setString(3, usuarioDTO.getEmail());
-            preparedStatement.setString(4, usuarioDTO.getPassword());            
-            preparedStatement.setBoolean(5, usuarioDTO.isNecesidadesEspeciales());
-            preparedStatement.setBoolean(6, usuarioDTO.isAdmin());
+            Date fechaNacimientoSQL = Date.valueOf(usuarioDTO.getFechaNacimiento());
+            preparedStatement.setDate(4, fechaNacimientoSQL);
+            preparedStatement.setString(5, usuarioDTO.getPassword());            
+            preparedStatement.setBoolean(6, usuarioDTO.isNecesidadesEspeciales());
+            preparedStatement.setBoolean(7, usuarioDTO.isAdmin());
 
             // Ejecutar la inserción
             int rowsAffected = preparedStatement.executeUpdate();
@@ -64,9 +67,9 @@ public class UsuarioDAO {
 
         // Realiza una consulta SQL para verificar si la asociación ya existe.
         // Devuelve true si existe, false si no.
-        String existeAsistenteQuery = SQLQueries.getQuery("sql.existeUsuario");
+        String existeUsuarioQuery = SQLQueries.getQuery("sql.existeUsuario");
 
-        try (PreparedStatement preparedStatement = connection.prepareStatement(existeAsistenteQuery)) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(existeUsuarioQuery)) {
             preparedStatement.setString(1, usuarioDTO.getEmail());
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -80,4 +83,54 @@ public class UsuarioDAO {
         return false;
     }
 
-}
+    public static UsuarioDTO listarUsuario(String emailUser, String passUser) {
+        int id;
+        String nombre = null;
+        String apellidos = null;
+        String email = null;
+        Date dateFechaNacimiento;
+        String password = null;
+        boolean atencionEspecial = false;
+        boolean esAdmin = false;
+        LocalDate fechaNacimiento = null;
+
+        DBConnection dbConnection = new DBConnection();
+        Connection connection = dbConnection.getConnection();
+
+        // Realiza una consulta SQL para verificar si la asociación ya existe.
+        // Devuelve true si existe, false si no.
+        String existeUsuarioQuery = SQLQueries.getQuery("sql.listarUsuario");
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(existeUsuarioQuery)) {
+            preparedStatement.setString(1, emailUser);
+            preparedStatement.setString(2, passUser);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                id = resultSet.getInt(1);
+                nombre = resultSet.getString(2);
+                apellidos = resultSet.getString(3);
+                dateFechaNacimiento = resultSet.getDate(4);
+                email = resultSet.getString(5);
+                password = resultSet.getString(6);
+                atencionEspecial = resultSet.getBoolean(7);
+                esAdmin = resultSet.getBoolean(8);
+
+                // Manejo de la conversión de fecha
+                if (dateFechaNacimiento != null) {
+                    fechaNacimiento = dateFechaNacimiento.toLocalDate();
+                }
+
+                UsuarioDTO usuarioDTO = new UsuarioDTO(nombre, apellidos, email, password, fechaNacimiento, atencionEspecial, esAdmin);
+                return usuarioDTO;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        UsuarioDTO usuarioDTO = new UsuarioDTO(nombre, apellidos, email, password, fechaNacimiento, atencionEspecial, esAdmin);
+        return usuarioDTO;
+    }
+
+    }
