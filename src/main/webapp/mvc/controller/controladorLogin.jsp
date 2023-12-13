@@ -19,8 +19,10 @@ if (email == null || password == null || email.isEmpty() || password.isEmpty()) 
 }
 else
 {
+	
     UsuarioDTO usuarioDTO = GestorUsuarios.listarUsuario(email, password);
     if (GestorUsuarios.existeUsuario(usuarioDTO)) {
+    	session.setAttribute("usuarioDTO", usuarioDTO);
         nextPage = "../view/inicioView.jsp";
     }
     else
