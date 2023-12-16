@@ -21,7 +21,7 @@
     </ul>
 <!-- Botones -->
 <div class="button-container">
-    <form action="<%= request.getContextPath() %>/SVDesconectar" method="post">
+    <form action="${pageContext.request.contextPath}/SVDesconectar" method="post">
         <button type="submit">Desconectar</button>
     </form>
 

@@ -6,8 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import es.uco.pw.business.Actividad.Actividad_DTO;
-import es.uco.pw.business.common.HorarioActividad_DTO;
-import es.uco.pw.business.common.NivelEducativo_DTO;
 import es.uco.pw.data.common.DBConnection;
 import es.uco.pw.data.common.SQLQueries;
 

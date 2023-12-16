@@ -34,15 +34,4 @@
     <location>/include/errorPage.jsp</location>
 </error-page>  
   
-      <!-- Configuración del servlet -->
-    <servlet>
-        <servlet-name>SVDesconectar</servlet-name>
-        <servlet-class>servlets.SVDesconectar</servlet-class>
-    </servlet>
-
-    <!-- Mapeo del servlet -->
-    <servlet-mapping>
-        <servlet-name>SVDesconectar</servlet-name>
-        <url-pattern>/SVDesconectar</url-pattern>
-    </servlet-mapping>
 </web-app>

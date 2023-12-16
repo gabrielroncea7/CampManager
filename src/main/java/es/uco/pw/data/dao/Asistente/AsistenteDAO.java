@@ -5,7 +5,6 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 
 import es.uco.pw.business.Asistente.Asistente_DTO;
 import es.uco.pw.data.common.DBConnection;

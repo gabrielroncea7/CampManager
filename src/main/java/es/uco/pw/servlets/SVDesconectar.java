@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet implementation class SVDesconectar
  */
-@WebServlet("/DesconectarServlet")
+@WebServlet("/SVDesconectar")
 public class SVDesconectar extends HttpServlet {
     /**
 	 * 
