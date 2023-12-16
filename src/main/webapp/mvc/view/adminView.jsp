@@ -50,14 +50,10 @@ Campamento_DTO campamento;
 			}
 		}
 	%>
-	<div class="button-container">
-	    <form action="${pageContext.request.contextPath}/SVDesconectar" method="post">
-	        <button type="submit">Desconectar</button>
-	    </form>
-	
-	    <form action="ModificarDatosServlet" method="post">
-	        <button type="submit">Modificar Datos</button>
-	    </form>
-	</div>
+
+    <div id="options">
+        <a href="#">Desconectar</a>
+        <a href="#">Modificar Datos</a>
+    </div>
 </body>
 </html>
