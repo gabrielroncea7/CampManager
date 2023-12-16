@@ -13,10 +13,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<%=request.getContextPath() %>/css/admin.css"> 
     <title>Página de Administrador</title>
-    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<%ResultSet resultSet = null;
+<%
+ResultSet resultSet = null;
 ResultSet resultSet2 = null;
 Campamento_DTO campamento;
 %>
@@ -33,11 +33,20 @@ Campamento_DTO campamento;
 			            <th>Campamento: <%=resultSet.getInt("Id") %></th>   
 			        </tr>
 			     	<%
-			 			 		
+			     		resultSet2 = GestorCampamentos.listarAsistentesCampamento(resultSet.getInt("Id"));
+				     		while(resultSet2.next())
+				     		{
+				     			%>
+				     				<tr>
+				     				<td> Participantes:<%=resultSet2.getString(1)%> <%=resultSet2.getString(2)%>  Tipo de Registro: <%=resultSet2.getString(3)%></td>
+				     				</tr>
+				     			<%
+
+				     		}
 			     	%>
 			    </table>
 				<%
-				
+
 			}
 		}
 	%>

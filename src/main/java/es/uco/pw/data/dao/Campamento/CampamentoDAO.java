@@ -103,15 +103,18 @@ public class CampamentoDAO {
         DBConnection dbConnection = new DBConnection();
         Connection connection = dbConnection.getConnection();
 
-        String listarInscripcionQuery = SQLQueries.getQuery("sql.listarAsistentesCampamento");
+        String listarAsistentesCampamentoQuery = SQLQueries.getQuery("sql.listarAsistentesCampamento");
 
-        try(PreparedStatement preparedStatement = connection.prepareStatement(listarInscripcionQuery)) {
+        try {
+        	PreparedStatement preparedStatement = connection.prepareStatement(listarAsistentesCampamentoQuery);
             preparedStatement.setInt(1, IdCampamento);
             
-        	ResultSet resultSet = preparedStatement.executeQuery();
+            ResultSet resultSet = preparedStatement.executeQuery();
 
-            return resultSet; // Devuelve el resultado para ser manejado en la función main
-        } catch (SQLException e) {
+                 return resultSet;  	
+
+           
+        	} catch (SQLException e) {
             e.printStackTrace();
             return null; // En caso de error, devuelve null
         }
