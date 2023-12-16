@@ -9,7 +9,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Página de inicio del Asistente</title>
-    <link rel="stylesheet" href="css/asistente.css">
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/css/asistente.css">
 </head>
 <body>
     <h1>Bienvenido, <%= userBean.getNombre() %></h1>
@@ -19,5 +19,15 @@
     <h2>Campamentos Inscritos:</h2>
     <ul>
     </ul>
+<!-- Botones -->
+<div class="button-container">
+    <form action="<%= request.getContextPath() %>/SVDesconectar" method="post">
+        <button type="submit">Desconectar</button>
+    </form>
+
+    <form action="ModificarDatosServlet" method="post">
+        <button type="submit">Modificar Datos</button>
+    </form>
+</div>
 </body>
 </html>
