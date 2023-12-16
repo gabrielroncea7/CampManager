@@ -27,7 +27,11 @@ public class GestorCampamentos {
     	return CampamentoDAO.listarCampamentosES();
     }
 
-
+    public static ResultSet listarAsistentesCampamento(int IdCampamento)
+    {
+    	return CampamentoDAO.listarAsistentesCampamento(IdCampamento);
+    }
+        
 	//Actividad
 	public static boolean escribirActividad(Actividad_DTO Actividad)
 	{

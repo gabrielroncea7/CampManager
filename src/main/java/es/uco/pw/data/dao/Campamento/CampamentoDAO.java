@@ -98,6 +98,24 @@ public class CampamentoDAO {
             return null; // En caso de error, devuelve null
         }
     }
+    
+    public static ResultSet listarAsistentesCampamento(int IdCampamento) {
+        DBConnection dbConnection = new DBConnection();
+        Connection connection = dbConnection.getConnection();
+
+        String listarInscripcionQuery = SQLQueries.getQuery("sql.listarAsistentesCampamento");
+
+        try(PreparedStatement preparedStatement = connection.prepareStatement(listarInscripcionQuery)) {
+            preparedStatement.setInt(1, IdCampamento);
+            
+        	ResultSet resultSet = preparedStatement.executeQuery();
+
+            return resultSet; // Devuelve el resultado para ser manejado en la función main
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null; // En caso de error, devuelve null
+        }
+    }
 
 
 }

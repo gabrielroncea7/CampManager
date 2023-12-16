@@ -4,7 +4,7 @@
 <%@ page errorPage="include/errorPage.jsp"%>
 <%@ page import="java.net.URLEncoder" %>
 <%@ page import="es.uco.pw.business.Gestores.GestorUsuarios,es.uco.pw.business.Usuario.UsuarioDTO"%>
-<jsp:useBean id="customerBean" scope="session" class="es.uco.pw.data.display.CustomerBean"></jsp:useBean>
+<jsp:useBean id="userBean" scope="session" class="es.uco.pw.data.display.CustomerBean"></jsp:useBean>
 
 <%
 String nextPage = "";
@@ -22,8 +22,23 @@ else
 	
     UsuarioDTO usuarioDTO = GestorUsuarios.listarUsuario(email, password);
     if (GestorUsuarios.existeUsuario(usuarioDTO)) {
-    	session.setAttribute("usuarioDTO", usuarioDTO);
-        nextPage = "../view/inicioView.jsp";
+    	userBean.setNombre(usuarioDTO.getNombre());
+    	userBean.setApellidos(usuarioDTO.getApellidos());
+    	userBean.setEmail(usuarioDTO.getEmail());
+    	userBean.setFechaNacimiento(usuarioDTO.getFechaNacimiento());
+    	userBean.setPassword(usuarioDTO.getPassword());
+    	userBean.setNecesidadesEspeciales(usuarioDTO.isNecesidadesEspeciales());
+    	userBean.setAdmin(usuarioDTO.isAdmin());
+    	
+    	if(usuarioDTO.isAdmin())
+    	{
+    	     nextPage = "../view/adminView.jsp";  
+    	}
+    	else
+    	{
+       		 nextPage = "../view/asistenteView.jsp";    		
+    	}
+    	
     }
     else
     {

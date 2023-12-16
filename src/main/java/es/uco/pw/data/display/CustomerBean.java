@@ -1,25 +1,20 @@
 package es.uco.pw.data.display;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 public class CustomerBean implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 
-	private String login;
 	private String nombre;
 	private String apellidos;
 	private String email;
-	private String contrasena;
+	private LocalDate fechaNacimiento; 
+	private String password;
 	private boolean necesidadesEspeciales;
-	private int rol;
+	private boolean Admin;
 	
-	public String getUsername() {
-		return login;
-	}
-	public void setUsername(String login) {
-		this.login = login;
-	}
 	public String getNombre() {
 		return nombre;
 	}
@@ -38,11 +33,17 @@ public class CustomerBean implements Serializable{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getContrasena() {
-		return contrasena;
+	public LocalDate getFechaNacimiento() {
+		return fechaNacimiento;
 	}
-	public void setContrasena(String contrasena) {
-		this.contrasena = contrasena;
+	public void setFechaNacimiento(LocalDate fechaNacimiento) {
+		this.fechaNacimiento = fechaNacimiento;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	public boolean isNecesidadesEspeciales() {
 		return necesidadesEspeciales;
@@ -50,12 +51,13 @@ public class CustomerBean implements Serializable{
 	public void setNecesidadesEspeciales(boolean necesidadesEspeciales) {
 		this.necesidadesEspeciales = necesidadesEspeciales;
 	}
-	public int isRol() {
-		return rol;
+	public boolean isAdmin() {
+		return Admin;
 	}
-	public void setRol(int rol) {
-		this.rol = rol;
+	public void setAdmin(boolean admin) {
+		Admin = admin;
 	}
+	
 
 
 }
