@@ -1,8 +1,16 @@
 <%@page import="es.uco.pw.business.Gestores.GestorCampamentos"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page errorPage="include/errorPage.jsp"%>
+<%@ page import="java.net.URLEncoder" %>
 
 <jsp:useBean id="userBean" scope="session" class="es.uco.pw.data.display.CustomerBean"></jsp:useBean>
+
+<%
+if(userBean.getEmail()==null || userBean.getEmail().isEmpty())
+{
+	response.sendRedirect("/Practica3" + "?message=" + URLEncoder.encode("Inicia sesión o Registrate", "UTF-8"));	
+}
+%>
 
 <!DOCTYPE html>
 <html>
@@ -25,7 +33,7 @@
         <button type="submit">Desconectar</button>
     </form>
 
-    <form action="${pageContext.request.contextPath}/SVModificar" method="post">
+    <form action="/Practica3/mvc/controller/controladorModificar" method="post">
         <button type="submit">Modificar Datos</button>
     </form>
 </div>
