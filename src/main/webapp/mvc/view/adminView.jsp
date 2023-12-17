@@ -72,7 +72,7 @@ Asistente_DTO asistente = new Asistente_DTO();
         <button type="submit">Desconectar</button>
     </form>
 
-    <form action="/practica3/mvc/controller/controladorModificar.jsp" method="post">
+    <form action="/Practica3/mvc/view/ModificarDatosView.jsp" method="post">
         <button type="submit">Modificar Datos</button>
     </form>
 </div>
