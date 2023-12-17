@@ -5,8 +5,13 @@ import java.time.LocalDate;
 
 public class CustomerBean implements Serializable{
 	
-	private static final long serialVersionUID = 1L;
 
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4624215731107015111L;
+	
 	private String nombre;
 	private String apellidos;
 	private String email;

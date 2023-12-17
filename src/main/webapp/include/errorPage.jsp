@@ -9,7 +9,13 @@
 <meta charset="UTF-8">
 <title>ERROR</title>
 </head>
-<body>
-
-</body>
+	<body>
+	<fieldset>
+		<legend>ERROR ${pageContext.errorData.statusCode}</legend>
+		<p>Ha ocurrido un error</p>
+		<form id="volver" method="get" action="/Practica3/src/main/webapp/mvc/controller/logOutController.jsp">
+			<input type="submit" value="De acuerdo"/>
+		</form>
+	</fieldset>
+	</body>
 </html>

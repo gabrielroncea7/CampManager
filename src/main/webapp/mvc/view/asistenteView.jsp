@@ -21,11 +21,11 @@
     </ul>
 <!-- Botones -->
 <div class="button-container">
-    <form action="${pageContext.request.contextPath}/SVDesconectar" method="post">
+    <form action="/Practica3/mvc/controller/logOutController.jsp" method="post">
         <button type="submit">Desconectar</button>
     </form>
 
-    <form action="ModificarDatosServlet" method="post">
+    <form action="${pageContext.request.contextPath}/SVModificar" method="post">
         <button type="submit">Modificar Datos</button>
     </form>
 </div>
