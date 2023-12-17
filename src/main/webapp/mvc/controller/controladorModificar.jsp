@@ -1,24 +1,61 @@
 <%@page import="java.time.LocalDate, java.time.format.DateTimeFormatter"%>
-<%@ page import="es.uco.pw.business.Gestores.GestorUsuarios"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page errorPage="include/errorPage.jsp"%>
 <%@ page import="java.net.URLEncoder" %>
 <%@ page import="es.uco.pw.business.Gestores.GestorUsuarios,es.uco.pw.business.Usuario.UsuarioDTO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.sql.Connection, java.sql.DriverManager, java.sql.PreparedStatement, java.io.PrintWriter" %>
 <jsp:useBean id="userBean" scope="session" class="es.uco.pw.data.display.CustomerBean"></jsp:useBean>
 
 <%
-String nextPage = "";
-String mensajeNextPage = "";
-	
-UsuarioDTO usuario = GestorUsuarios.listarUsuario(userBean.getEmail(), userBean.getPassword());
-
-if(userBean == null || userBean.getEmail().isEmpty() || userBean.getEmail() == null)
+if(userBean.getEmail()==null || userBean.getEmail().isEmpty())
 {
-	nextPage="../../index.jsp";
-	mensajeNextPage = "Acceda o Regístrese";
+	response.sendRedirect("/Practica3" + "?message=" + URLEncoder.encode("Inicia sesión o Registrate", "UTF-8"));	
 }
+%>
 
+<%
+// Recuperar los parámetros del formulario
+String nuevoNombre = request.getParameter("nombre");
+String nuevoApellido = request.getParameter("apellido");
+String nuevaFechaNacimiento = request.getParameter("fechaNacimiento");
+String nuevaPassword = request.getParameter("password");
 
-response.sendRedirect(nextPage + "?message=" + URLEncoder.encode(mensajeNextPage, "UTF-8"));
+// Realizar la conexión a la base de datos (ajusta estos valores según tu configuración)
+String jdbcUrl = "jdbc:mysql://oraclepr.uco.es:3306/i02rafea";
+String dbUser = "i02rafea";
+String dbPassword = "usuario";
 
+try {
+	Class.forName("com.mysql.jdbc.Driver");
+    Connection connection = DriverManager.getConnection(jdbcUrl, dbUser, dbPassword);
+
+    // Preparar la sentencia SQL para la actualización
+    String sql = "UPDATE Usuarios SET nombre=?, apellido=?, fechaNacimiento=?, password=? WHERE email=?";
+    PreparedStatement statement = connection.prepareStatement(sql);
+
+    // Establecer los valores de los parámetros en la sentencia SQL
+    statement.setString(1, nuevoNombre);
+    statement.setString(2, nuevoApellido);
+    statement.setString(3, nuevaFechaNacimiento);
+    statement.setString(4, nuevaPassword);
+    statement.setString(5, userBean.getEmail());  // Ajusta esto según tu modelo
+
+    // Ejecutar la actualización
+    int filasActualizadas = statement.executeUpdate();
+
+    // Comprobar si se realizaron actualizaciones
+    if (filasActualizadas > 0) {
+        out.println("¡Datos actualizados correctamente!");
+    } else {
+        out.println("No se realizaron actualizaciones.");
+    }
+
+    // Cerrar la conexión y la declaración
+    statement.close();
+    connection.close();
+
+} catch (Exception e) {
+    e.printStackTrace();
+    out.println("Error en la conexión o actualización de la base de datos.");
+}
 %>
