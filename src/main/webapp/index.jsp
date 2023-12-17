@@ -24,10 +24,8 @@
 			    }
 			%>
             <h2>Iniciar Sesión</h2>
-            <label for="email">Correo:</label>
-            <input type="email" id="email" name="email" required>
-            <label for="password">Contraseña:</label>
-            <input type="password" id="password" name="password" required>
+            <input type="email" id="email" name="email" placeholder="Correo" required>
+    		<input type="password" id="password" name="password" placeholder="Contraseña" required>
             <button type="submit">Iniciar Sesión</button>
             <p class="register-link">¿No tienes una cuenta? <a href="mvc/view/registroView.jsp">Regístrate aquí</a></p>
         </form>

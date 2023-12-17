@@ -68,7 +68,7 @@ Asistente_DTO asistente = new Asistente_DTO();
 	%>
 
 <div class="button-container">
-    <form action="#" method="post">
+    <form action="/Practica3/mvc/controller/logOutController.jsp" method="post">
         <button type="submit">Desconectar</button>
     </form>
 
