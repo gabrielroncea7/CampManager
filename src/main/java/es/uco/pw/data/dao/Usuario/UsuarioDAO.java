@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Properties;
 
+import es.uco.pw.business.Asistente.Asistente_DTO;
 import es.uco.pw.business.Usuario.UsuarioDTO;
 import es.uco.pw.data.common.DBConnection;
 import es.uco.pw.data.common.SQLQueries;
@@ -132,5 +133,82 @@ public class UsuarioDAO {
         UsuarioDTO usuarioDTO = new UsuarioDTO(nombre, apellidos, email, password, fechaNacimiento, atencionEspecial, esAdmin);
         return usuarioDTO;
     }
+    
+    
+	public static boolean asociarAsistenteUsuario(String emailUser, int idAsistente) {
+	    DBConnection dbConnection = new DBConnection();
+	    Connection connection = dbConnection.getConnection();
+	    
+	    String asociarAsistenteUsuarioQuery = SQLQueries.getQuery("sql.asociarUsuarioAsistente");
+
+	    try {
+	        PreparedStatement preparedStatement = connection.prepareStatement(asociarAsistenteUsuarioQuery);
+	        preparedStatement.setString(1, emailUser);
+	        preparedStatement.setInt(2, idAsistente);
+	        
+        	int rowsAffected = preparedStatement.executeUpdate();
+    	    return rowsAffected > 0;
+
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	        return false;
+	    } finally {
+	        dbConnection.closeConnection();
+	    }
+
+	}
+	
+	
+    public static int obtenerAsistenteUsuario(String emailUser) {
+        int id = 0;
+
+        DBConnection dbConnection = new DBConnection();
+        Connection connection = dbConnection.getConnection();
+
+        // Realiza una consulta SQL para verificar si la asociación ya existe.
+        // Devuelve true si existe, false si no.
+        String obtenerAsistenteUsuarioQuery = SQLQueries.getQuery("sql.obtenerAsistenteUsuario");
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(obtenerAsistenteUsuarioQuery)) {
+            preparedStatement.setString(1, emailUser);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                id = resultSet.getInt(1);
+                return id;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return id;
+    }
+    
+    public static int obtenerIdAsistenteUsuario(Asistente_DTO asistenteDTO) {
+        DBConnection dbConnection = new DBConnection();
+        Connection connection = dbConnection.getConnection();
+
+        int id=0;
+        
+        // Realiza una consulta SQL para verificar si la asociación ya existe.
+        // Devuelve true si existe, false si no.
+        String obtenerIdAsistenteUsuarioQuery = SQLQueries.getQuery("sql.obtenerIdAsistenteUsuario");
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(obtenerIdAsistenteUsuarioQuery)) {
+            preparedStatement.setString(1, asistenteDTO.getNombre());
+            preparedStatement.setString(2, asistenteDTO.getApellidos());
+            preparedStatement.setDate(3, Date.valueOf(asistenteDTO.getFechaNacimiento()));
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                id = resultSet.getInt(1);
+                return id;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return id;
+    }
+	
 
     }

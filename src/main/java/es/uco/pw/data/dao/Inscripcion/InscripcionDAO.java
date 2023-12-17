@@ -258,8 +258,43 @@ public class InscripcionDAO {
 	return false;
 	}
 
-	
-	
+	public static String listarInscripcionesAsistente(int Id_asistente) {
+		
+		String Inscripciones = null;
+		String stringTipoRegistro;
+		
+		DBConnection dbConnection = new DBConnection();
+	    Connection connection = dbConnection.getConnection();
+    // Realiza una consulta SQL para verificar si la asociación ya existe.
+    // Devuelve true si existe, false si no.
+	   String comprobarAsistenteCampamentoQuery = SQLQueries.getQuery("sql.listarInscripcionesAsistente");
+
+    try (PreparedStatement preparedStatement = connection.prepareStatement(comprobarAsistenteCampamentoQuery)) {
+        preparedStatement.setInt(1, Id_asistente);
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+        
+        while (resultSet.next()) {
+            int idCampamento = resultSet.getInt(3);
+            Date fechaInscripcion = resultSet.getDate(4);
+            int precio = resultSet.getInt(4);
+            boolean tipoRegistro = resultSet.getBoolean(5);
+            
+            if (tipoRegistro = true) {
+            	stringTipoRegistro = "Temprano";
+            } else
+            {
+            	stringTipoRegistro = "Tardio";
+            }
+            
+            Inscripciones = Inscripciones + "<br/>##################<br/>ID CAMPAMENTO: " + idCampamento + "<br/>Fecha Inscripcion: " + fechaInscripcion + "<br/>Precio: " + precio + "<br/>Tipo Registro: " + stringTipoRegistro + "<br/>##################";
+            
+        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+    return Inscripciones;
+	}
 	
 }
 

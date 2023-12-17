@@ -126,7 +126,7 @@ CREATE TABLE IF NOT EXISTS Monitor_Campamento (
 -- 
 -- Estructura de tabla para la tabla `Usuarios`
 -- 
-
+DROP TABLE IF EXISTS `Usuarios`;
 CREATE TABLE `Usuarios` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(30) NOT NULL,
@@ -139,3 +139,14 @@ CREATE TABLE `Usuarios` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
 ) ENGINE=MyISAM AUTO_INCREMENT=45 DEFAULT CHARSET=latin1 AUTO_INCREMENT=45;
+
+-- Estructura de tabla para la tabla Usuario_Asistente
+
+DROP TABLE IF EXISTS `Usuario_Asistente`;
+CREATE TABLE IF NOT EXISTS Usuario_Asistente (
+  email VARCHAR(30) NOT NULL,
+  idAsistente int NOT NULL,
+  PRIMARY KEY (email),
+  FOREIGN KEY (email) REFERENCES Usuarios(email),
+  FOREIGN KEY (idAsistente) REFERENCES Asistente(Id_persona)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

@@ -4,6 +4,7 @@
 <%@ page errorPage="include/errorPage.jsp"%>
 <%@ page import="java.net.URLEncoder" %>
 <%@ page import="es.uco.pw.business.Gestores.GestorUsuarios,es.uco.pw.business.Usuario.UsuarioDTO"%>
+<%@ page import="es.uco.pw.business.Gestores.GestorAsistentes,es.uco.pw.business.Asistente.Asistente_DTO"%>
 <jsp:useBean id="userBean" scope="session" class="es.uco.pw.data.display.CustomerBean"></jsp:useBean>
 
 <%
@@ -29,10 +30,21 @@ if (nombre == null || apellidos == null || email == null || password == null || 
     mensajeNextPage ="Campos incompletos";
 } else {
     UsuarioDTO usuarioDTO = new UsuarioDTO(nombre, apellidos, email, password, fechaNacimiento,boolSpecialNeeds, boolAdminUser);
+    Asistente_DTO asistenteDTO = new Asistente_DTO(1, nombre, apellidos, fechaNacimiento, boolSpecialNeeds);    
+    
     if (GestorUsuarios.existeUsuario(usuarioDTO)) {
         nextPage = "../view/registroView.jsp";
         mensajeNextPage = "El email ya existe";
     } else {
+    	
+    	//CREACION DE ASISTENTE CON LOS DATOS DE USUARIO
+    	//Y CREACION DE RELACION USUARIO-ASISTENTE
+    	if(!boolAdminUser){
+    		GestorAsistentes.escribirAsistente(asistenteDTO);
+    		int idAsistente = GestorUsuarios.obtenerIdAsistenteUsuario(asistenteDTO);
+    		GestorUsuarios.asociarAsistenteUsuario(email, idAsistente);
+    	}
+    	
         GestorUsuarios.escribirUsuario(usuarioDTO);
         nextPage = "../../index.jsp";
         mensajeNextPage = "Usuario creado correctamente";

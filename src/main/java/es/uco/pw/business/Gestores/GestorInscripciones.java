@@ -2,6 +2,7 @@ package es.uco.pw.business.Gestores;
 
 import java.sql.ResultSet;
 
+import es.uco.pw.business.Factory.Inscripcion_DTO;
 import es.uco.pw.data.dao.Inscripcion.InscripcionDAO;
 
 public class GestorInscripciones {
@@ -34,7 +35,8 @@ public class GestorInscripciones {
 		return InscripcionDAO.ComprobarInscripcion(Id_asistente, Id_Campamento);
 	}
 
+	public static String listarInscripcionesAsistente(int Id_asistente) {
+		return InscripcionDAO.listarInscripcionesAsistente(Id_asistente);
+	}
 
-	
-	
 }
