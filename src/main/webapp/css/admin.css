@@ -29,22 +29,31 @@ h1 {
     background-color: #fff;
 }
 
-#options {
-    margin-top: 20px;
-}
-
-#options a {
-    display: inline-block;
-    margin: 10px;
-    text-decoration: none;
-    color: #fff;
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
     padding: 10px 20px;
-    background-color: #3498db;
-    border: 1px solid #2980b9;
+    margin-bottom: 10px;
+    font-size: 16px;
     border-radius: 5px;
-    transition: background-color 0.3s ease;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-#options a:hover {
-    background-color: #2980b9;
+button:hover {
+    background-color: #45a049;
+}
+
+/* Estilos para la posición de los botones */
+.button-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex; /* Utilizamos flexbox para alinear los botones en la misma línea */
+}
+
+/* Añadimos un estilo específico para los formularios dentro de .button-container */
+.button-container form {
+    margin-right: 10px; /* Espacio entre los botones */
 }
