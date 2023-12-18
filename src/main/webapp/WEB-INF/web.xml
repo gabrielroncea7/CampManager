@@ -34,16 +34,4 @@
     <location>/include/errorPage.jsp</location>
 </error-page>  
   
-  
- <servlet>
-<servlet-name>mostrarActividad</servlet-name>
-<servlet-class>pw.servlets.SVMostarActividad</servlet-class>
- </servlet>
- <servlet-mapping>
-   <servlet-name>mostrarActividad</servlet-name>
-   <url-pattern>/mostrarActividad</url-pattern>
- </servlet-mapping>
-
- 
-  
 </web-app>

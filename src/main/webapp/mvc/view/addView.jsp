@@ -32,7 +32,7 @@ Asistente_DTO asistente = new Asistente_DTO();
 %>
 
 		<div class="big-button-container">
-		    <form action="<%=request.getContextPath()%>/SVMostrarActividad" method="get">
+		    <form action="/Practica3/mostrarActividad" method="get">
 		        <button type="submit" class="big-button">Añadir Actividad</button>
 		    </form>
 		    <form action="/Practica3/mvc/controller/otraPagina2.jsp" method="get">
