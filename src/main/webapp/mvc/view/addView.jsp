@@ -32,51 +32,17 @@ Asistente_DTO asistente = new Asistente_DTO();
 %>
 
 		<div class="big-button-container">
-		    <form action="/Practica3/mvc/view/addView.jsp" method="get">
-		        <button type="submit" class="big-button">Dar de alta actividades, monitores y campamentos</button>
+		    <form action="<%=request.getContextPath()%>/SVMostrarActividad" method="get">
+		        <button type="submit" class="big-button">Añadir Actividad</button>
 		    </form>
 		    <form action="/Practica3/mvc/controller/otraPagina2.jsp" method="get">
-		        <button type="submit" class="big-button">Asociar actividades a campamentos</button>
+		        <button type="submit" class="big-button">Añadir Monitor</button>
 		    </form>
 		    <form action="/Practica3/mvc/controller/otraPagina3.jsp" method="get">
-		        <button type="submit" class="big-button">Asociar monitores a actividades y campamentos</button>
+		        <button type="submit" class="big-button">Añadir Campamento</button>
 		    </form>
 		</div>
 
-	
-    <h1>Listado de Campamentos</h1>
-	<%
-		resultSet = GestorCampamentos.listarCampamentos();
-		if(resultSet != null)
-		{
-			while (resultSet.next())
-			{
-				campamento.setId(resultSet.getInt("Id"));
-				%>
-			    <table id="campamentos-list">
-			        <tr>
-			            <th>Campamento: <%=campamento.getId() %></th>   
-			            <th> Tipo de Registro</th>
-			        </tr>
-			     	<%
-			     		resultSet2 = GestorCampamentos.listarAsistentesCampamento(resultSet.getInt("Id"));
-				     		while(resultSet2.next())
-				     		{
-				     			asistente.setNombre(resultSet2.getString(1));
-				     			asistente.setApellidos(resultSet2.getString(2));
-				     			%>
-				     				<tr>
-				     				<td> <%=asistente.getNombre().toUpperCase()%> <%=asistente.getApellidos().toUpperCase()%> </td>
-				     				<td> <%=(resultSet2.getInt(3) == 1) ? "Completa" : "Parcial" %></td>
-				     				</tr>
-				     			<%
-				     		}
-			     	%>
-			    </table>
-				<%
-			}
-		}
-	%>
 
 <div class="button-container">
     <form action="/Practica3/mvc/controller/logOutController.jsp" method="post">

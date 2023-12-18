@@ -57,3 +57,33 @@ button:hover {
 .button-container form {
     margin-right: 10px; /* Espacio entre los botones */
 }
+
+/* Estilos para la posición de los botones */
+.big-button-container {
+    margin-top: 5%;
+    margin-right: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+/* Estilos para los botones grandes */
+.big-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 20px;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%; /* Cambiado a 100% para ocupar todo el ancho */
+    text-align: center;
+    display: block; /* Añadido para ocupar todo el ancho */
+    margin: 0 auto; /* Añadido para centrar el texto */
+}
+.big-button:hover {
+    background-color: #45a049;
+}
+
+
