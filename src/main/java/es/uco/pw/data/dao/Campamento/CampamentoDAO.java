@@ -76,6 +76,27 @@ public class CampamentoDAO {
             return null; // En caso de error, devuelve null
         }
     }
+    
+    public static ResultSet listarCampamentosDisponibles(Date fecha1, Date fecha2) {
+        DBConnection dbConnection = new DBConnection();
+        Connection connection = dbConnection.getConnection();
+
+        String listarCampamentosDisponiblesQuery = SQLQueries.getQuery("sql.listarCampamentosDisponibles");
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(listarCampamentosDisponiblesQuery);
+            
+            preparedStatement.setDate(1, fecha1);
+            preparedStatement.setDate(2, fecha2);
+            
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            return resultSet; // Devuelve el resultado para ser manejado en la función main
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null; // En caso de error, devuelve null
+        }
+    }
 
     /**
      * Obtiene un conjunto de resultados con la lista de campamentos en español.

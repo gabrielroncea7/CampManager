@@ -1,5 +1,6 @@
 package es.uco.pw.business.Gestores;
 
+import java.sql.Date;
 import java.sql.ResultSet;
 
 import es.uco.pw.business.Actividad.Actividad_DTO;
@@ -21,6 +22,10 @@ public class GestorCampamentos {
 	
     public static ResultSet listarCampamentos() {
     	return CampamentoDAO.listarCampamentos();
+    }
+    
+    public static ResultSet listarCampamentosDisponibles(Date fecha1, Date fecha2) {
+    	return CampamentoDAO.listarCampamentosDisponibles(fecha1, fecha2);
     }
     
     public static ResultSet listarCampamentosES() {
@@ -115,5 +120,6 @@ public class GestorCampamentos {
 	
 	public static boolean mismoNivelEducativo(String nombre_Actividad, int idCampamento) {
 		return AsociarDAO.mismoNivelEducativo(nombre_Actividad, idCampamento);
-	}	
+	}
+
 }

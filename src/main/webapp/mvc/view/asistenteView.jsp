@@ -43,7 +43,7 @@ if(userBean.getEmail()==null || userBean.getEmail().isEmpty())
         <button type="submit">Modificar Datos</button>
     </form>
     
-    <form action="../../../java/es/uco/pw/servlets/SVMostrarCampamentosDisponibles.java	" method="post">
+    <form action="../../java/es/uco/pw/servlets/SVMostrarCampamentosDisponibles.java" method="post">
     	<div class="flex-container">
 	        <div class="flex-item">
 	            <label for="birthdate">Fecha 1</label>

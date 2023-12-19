@@ -42,6 +42,16 @@
 <servlet-name>mostrarActividad</servlet-name>
 <url-pattern>/mostrarActividad</url-pattern>
 </servlet-mapping>
+
+
+  <servlet>
+<servlet-name>mostrarCampamentosDisponibles</servlet-name>
+<servlet-class>es.uco.pw.servlets.SVCampamentosDisponibles</servlet-class>
+</servlet>
+  <servlet-mapping>
+<servlet-name>mostrarCampamentosDisponibles</servlet-name>
+<url-pattern>/mostrarCampamentosDisponibles</url-pattern>
+</servlet-mapping>
   
   
   
