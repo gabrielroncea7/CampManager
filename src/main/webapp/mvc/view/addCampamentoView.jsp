@@ -1,6 +1,8 @@
+ 
+ 
  <div >
         <h2>Añadir Campamento</h2>
-        <form action="/Practica3/mvc/controller/TuControlador" method="post">
+        <form action="Practica3/crearActividad" method="post">
             <label for="fechaInicio">Fecha de Inicio:</label>
             <input type="date" id="fechaInicio" name="fechaInicio" required>
             

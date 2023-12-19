@@ -12,7 +12,7 @@
 <body>
     <div >
         <h2>Añadir Monitor</h2>
-        <form action="/Practica3/mvc/controller/TuControlador" method="post">
+        <form action="Practica3/crearActividad" method="post">
             <label for="nombreMonitor">Nombre del Monitor:</label>
             <input type="text" id="nombreMonitor" name="nombreMonitor" required>
             

@@ -14,7 +14,6 @@ if(userBean.getEmail()==null || userBean.getEmail().isEmpty())
 	response.sendRedirect("/Practica3" + "?message=" + URLEncoder.encode("Inicia sesión o Registrate", "UTF-8"));	
 }
 %>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -24,16 +23,6 @@ if(userBean.getEmail()==null || userBean.getEmail().isEmpty())
     <title>Página de Administrador</title>
 </head>
 <body>
-<%
-ResultSet resultSet = (ResultSet)request.getAttribute("verCampamentos");
-while(resultSet.next())
-{
-	%>
-	<a><%=resultSet.getString(1) %></a>
-	<%
-}
-%>
-
 
 </body>
 </html>

@@ -78,7 +78,7 @@ button:hover {
     border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.3s;
-    width: 30%; /* Cambiado a 100% para ocupar todo el ancho */
+    width: 100%; /* Cambiado a 100% para ocupar todo el ancho */
     text-align: center;
     display: block; /* Añadido para ocupar todo el ancho */
     margin: 0 auto; /* Añadido para centrar el texto */

@@ -1,6 +1,6 @@
-   <div >
+   <div > 
         <h2>Añadir Actividad</h2>
-        <form action="" method="post">
+        <form action="<%= request.getContextPath() %>/crearActividad" method="post">
             <label for="nombreActividad">Nombre de la Actividad:</label>
             <input type="text" id="nombreActividad" name="nombreActividad" required>
             
@@ -24,5 +24,6 @@
             <input type="number" id="numMonitores" name="numMonitores" required min="0">
             
             <button type="submit" class="big-button">Guardar Actividad</button>
-        </form>
+        </form>       
     </div>
+	    
