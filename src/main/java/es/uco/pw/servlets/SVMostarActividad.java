@@ -18,7 +18,7 @@ import es.uco.pw.business.Actividad.Actividad_DTO;
 /**
  * Servlet implementation class SVMostarActividad
  */
-@WebServlet("/SVMostarActividad")
+@WebServlet(name="mostrarActividad", urlPatterns="/mostrarActividad")
 public class SVMostarActividad extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
