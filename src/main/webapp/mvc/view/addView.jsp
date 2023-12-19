@@ -24,24 +24,17 @@ if(userBean.getEmail()==null || userBean.getEmail().isEmpty())
     <title>Página de Administrador</title>
 </head>
 <body>
-<%
-ResultSet resultSet = null;
-ResultSet resultSet2 = null;
-Campamento_DTO campamento = new Campamento_DTO();
-Asistente_DTO asistente = new Asistente_DTO();
-%>
+<body>
+<div class="big-button-container">
+    <button type="button" class="big-button" onclick="mostrarFormulario('addActividad')">Añadir Actividad</button>
+    <button type="button" class="big-button" onclick="mostrarFormulario('addMonitor')">Añadir Monitor</button>
+    <!-- Otros botones ... -->
+</div>
 
-		<div class="big-button-container">
-		    <form action="/Practica3/mostrarActividad" method="get">
-		        <button type="submit" class="big-button">Añadir Actividad</button>
-		    </form>
-		    <form action="/Practica3/mvc/controller/otraPagina2.jsp" method="get">
-		        <button type="submit" class="big-button">Añadir Monitor</button>
-		    </form>
-		    <form action="/Practica3/mvc/controller/otraPagina3.jsp" method="get">
-		        <button type="submit" class="big-button">Añadir Campamento</button>
-		    </form>
-		</div>
+<div class="form-container" id="addActividad" style="display: none;"></div>
+<div class="form-container" id="addMonitor" style="display: none;"></div>
+
+<!-- Otros elementos ... -->
 
 
 <div class="button-container">
@@ -53,5 +46,6 @@ Asistente_DTO asistente = new Asistente_DTO();
         <button type="submit">Modificar Datos</button>
     </form>
 </div>
+<script src="<%=request.getContextPath() %>/js/mostrarFormulario.js"></script>
 </body>
 </html>
