@@ -287,7 +287,7 @@ public class InscripcionDAO {
             	stringTipoRegistro = "Tardio";
             }
             
-            Inscripciones = Inscripciones + "<br/>##################<br/>ID CAMPAMENTO: " + idCampamento + "<br/>Fecha Inscripcion: " + fechaInscripcion + "<br/>Precio: " + precio + "<br/>Tipo Registro: " + stringTipoRegistro + "<br/>##################";
+            Inscripciones = "<br/>##################<br/>ID CAMPAMENTO: " + idCampamento + "<br/>Fecha Inscripcion: " + fechaInscripcion + "<br/>Precio: " + precio + "<br/>Tipo Registro: " + stringTipoRegistro + "<br/>################## <br>" + Inscripciones;
             
         }
 	    } catch (SQLException e) {

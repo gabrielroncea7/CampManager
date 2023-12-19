@@ -42,6 +42,24 @@ if(userBean.getEmail()==null || userBean.getEmail().isEmpty())
     <form action="/Practica3/mvc/controller/controladorModificar" method="post">
         <button type="submit">Modificar Datos</button>
     </form>
+    
+    <form action="../../../java/es/uco/pw/servlets/SVMostrarCampamentosDisponibles.java	" method="post">
+    	<div class="flex-container">
+	        <div class="flex-item">
+	            <label for="birthdate">Fecha 1</label>
+	            <input type="date" id="fecha1" name="fecha1" required>
+	        </div>
+    	</div>
+    	<br>
+    	<div class="flex-container">
+	        <div class="flex-item">
+	            <label for="birthdate">Fecha 2</label>
+	            <input type="date" id="fecha2" name="fecha2" required>
+	        </div>
+    	</div>
+    
+        <button type="submit">Ver campamentos disponibles</button>
+    </form>
 </div>
 </body>
 </html>
