@@ -35,7 +35,7 @@ Asistente_DTO asistente = new Asistente_DTO();
 		    <form action="/Practica3/mvc/view/addView.jsp" method="get">
 		        <button type="submit" class="big-button">Dar de alta actividades, monitores y campamentos</button>
 		    </form>
-		    <form action="/Practica3/mvc/controller/otraPagina2.jsp" method="get">
+		    <form action="/Practica3/asociarActividadCampamento" method="get">
 		        <button type="submit" class="big-button">Asociar actividades a campamentos</button>
 		    </form>
 		    <form action="/Practica3/mvc/controller/otraPagina3.jsp" method="get">

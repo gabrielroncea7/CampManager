@@ -41,21 +41,22 @@ public class SVCrearCampamento extends HttpServlet {
 		HttpSession session = request.getSession();
 		CustomerBean userBean = (CustomerBean) session.getAttribute("userBean");
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-
+		String msg = "No se puede crear el campamento, comprueba las credenciales";
 	        if (userBean != null && userBean.getEmail() != null) {
 	            	Campamento_DTO campamento= new Campamento_DTO();
 	            	campamento.setFechaInicio(LocalDate.parse(request.getParameter("fechaInicio"), formatter) );
 	            	campamento.setFechaFin(LocalDate.parse(request.getParameter("fechaFin"), formatter) );
 	            	campamento.setNivelEducativo(NivelEducativo_DTO.valueOf(request.getParameter("nivelEducativo")));
 	            	campamento.setNumeroMaximoAsistentes(Integer.parseInt(request.getParameter("numMaxAsistentes")));
-	           	
-	            	GestorCampamentos.escribirCampamento(campamento);
+	            	if(GestorCampamentos.escribirCampamento(campamento))
+	            	{
+	            		msg = "Campamento creado correctamente";
+	 	            	}
 	            	
-	            	String msg = "Campamento creado correctamente";
-	    			request.setAttribute("msg", msg);
-	    			RequestDispatcher rd = request.getRequestDispatcher("/mvc/view/addView.jsp");
-	    			rd.forward(request, response);
-	    		
+	            	
+	                request.setAttribute("msg", msg);
+	                RequestDispatcher rd = request.getRequestDispatcher("./mvc/view/addView.jsp");
+	                rd.forward(request, response);
 	        	
 	        } else {
 				response.sendRedirect(request.getContextPath());

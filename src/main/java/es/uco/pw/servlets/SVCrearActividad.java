@@ -1,7 +1,6 @@
 package es.uco.pw.servlets;
 
 import java.io.IOException;
-import java.sql.ResultSet;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -26,32 +25,31 @@ public class SVCrearActividad extends HttpServlet {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 CustomerBean userBean = (CustomerBean) request.getSession().getAttribute("userBean");
+	// Otros métodos y atributos...
 
-	        if (userBean != null && userBean.getEmail() != null) {
-	            	Actividad_DTO actividad = new Actividad_DTO();
-	            	actividad.setNombreActividad(request.getParameter("nombreActividad"));
-	            	actividad.setnEducativo(NivelEducativo_DTO .valueOf( request.getParameter("nivelEducativo")));
-	            	actividad.sethActividad(HorarioActividad_DTO.valueOf(request.getParameter("horario")));
-	            	actividad.setNumeroParticipantes(Integer.parseInt(request.getParameter("numParticipantes")));
-	            	actividad.setMonitoresNecesarios(Integer.parseInt(request.getParameter("numMonitores")));
-	           	
-	            	GestorCampamentos.escribirActividad(actividad);
-	            	
-	            	String msg = "Actividad creada correctamente";
-	    			request.setAttribute("msg", msg);
-	    			RequestDispatcher rd = request.getRequestDispatcher("/mvc/view/addView.jsp");
-	    			response.sendRedirect("/mvc/view/addView.jsp");
-	    			rd.forward(request, response);
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        CustomerBean userBean = (CustomerBean) request.getSession().getAttribute("userBean");
+        String msg = "La actividad no se ha podido crear, comprueba las credenciales";
+       
+        if (userBean != null && userBean.getEmail() != null) {
+        	Actividad_DTO actividad = new Actividad_DTO();
+        	actividad.setNombreActividad(request.getParameter("nombreActividad"));
+        	actividad.setnEducativo(NivelEducativo_DTO .valueOf( request.getParameter("nivelEducativo")));
+        	actividad.sethActividad(HorarioActividad_DTO.valueOf(request.getParameter("horario")));
+        	actividad.setNumeroParticipantes(Integer.parseInt(request.getParameter("numParticipantes")));
+        	actividad.setMonitoresNecesarios(Integer.parseInt(request.getParameter("numMonitores")));
+       	
+        	GestorCampamentos.escribirActividad(actividad);
+            if(GestorCampamentos.escribirActividad(actividad))
+            {          	
+            	 msg = "Actividad creada correctamente";
+            }
 
-	        	
-	        } else {
-				response.sendRedirect(request.getContextPath());
-	        }
-	}
-
+            request.setAttribute("msg", msg);
+            RequestDispatcher rd = request.getRequestDispatcher("./mvc/view/addView.jsp");
+            rd.forward(request, response);
+        } else {
+            response.sendRedirect(request.getContextPath());
+        }
+    }
 }

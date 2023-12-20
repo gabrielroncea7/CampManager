@@ -13,7 +13,7 @@
             
             <label for="horario">Horario de la Actividad:</label>
             <select id="horario" name="horario" required>
-                <option value="Mañana">Mañana</option>
+                <option value="Manana">Mañana</option>
                 <option value="Tarde">Tarde</option>
             </select>
             

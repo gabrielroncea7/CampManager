@@ -28,30 +28,6 @@ if(userBean.getEmail()==null || userBean.getEmail().isEmpty())
 <body>
 <body>
 
-<div class="big-button-container">
-		<button type="button" class="big-button" onclick="mostrarFormulario('addActividad')">Añadir Actividad</button>
-   		<button type="button" class="big-button" onclick="mostrarFormulario('addMonitor')">Añadir Monitor</button>
-        <button type="button" class="big-button" onclick="mostrarFormulario('addCampamento')">Añadir Campamento</button>
-</div>
-
-
-<div class="form-container" id="addActividad" style="display: none;"></div>
-<div class="form-container" id="addMonitor" style="display: none;"></div>
-<div class="form-container" id="addCampamento" style="display: none;"></div>
-
-
-                    <%-- Muestra el mensaje si está presente --%>
-			<%
-			    String msg =(String)request.getAttribute("msg");
-			    if (msg != null && !msg.isEmpty()) {
-			%>
-				<div class="form-container">
-			    <h2><%= msg %></h2>
-			    </div>
-			<%
-			    }
-			%>
-
 
 <div class="button-container">
     <form action="/Practica3/mvc/controller/logOutController.jsp" method="post">
@@ -62,6 +38,5 @@ if(userBean.getEmail()==null || userBean.getEmail().isEmpty())
         <button type="submit">Modificar Datos</button>
     </form>
 </div>
-<script src="<%=request.getContextPath() %>/js/mostrarFormulario.js"></script>
 </body>
 </html>

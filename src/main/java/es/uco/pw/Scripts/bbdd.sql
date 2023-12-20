@@ -7,7 +7,7 @@ DROP TABLE IF EXISTS `Actividad`;
 CREATE TABLE IF NOT EXISTS `Actividad` (
   `Nombre` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `nEducativo` ENUM('Infantil', 'Juvenil', 'Adolescente') DEFAULT NULL,
-  `hActividad` ENUM('Mañana', 'Tarde') DEFAULT NULL,
+  `hActividad` ENUM('Manana', 'Tarde') DEFAULT NULL,
   `nParticipantes` int DEFAULT NULL,
   `nMonitores` int DEFAULT NULL,
   PRIMARY KEY (`Nombre`)
