@@ -30,7 +30,7 @@ if(userBean.getEmail()==null || userBean.getEmail().isEmpty())
 <div class="big-button-container">
 		<button type="button" class="big-button" onclick="mostrarFormulario('addActividad')">Añadir Actividad</button>
    		<button type="button" class="big-button" onclick="mostrarFormulario('addMonitor')">Añadir Monitor</button>
-        <button type="button" class="big-button" onclick="mostrarFormulario('addCampamento')">Añadir Monitor</button>
+        <button type="button" class="big-button" onclick="mostrarFormulario('addCampamento')">Añadir Campamento</button>
 </div>
 
 
