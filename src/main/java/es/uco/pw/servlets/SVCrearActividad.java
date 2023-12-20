@@ -39,7 +39,7 @@ public class SVCrearActividad extends HttpServlet {
         	actividad.setNumeroParticipantes(Integer.parseInt(request.getParameter("numParticipantes")));
         	actividad.setMonitoresNecesarios(Integer.parseInt(request.getParameter("numMonitores")));
        	
-        	GestorCampamentos.escribirActividad(actividad);
+
             if(GestorCampamentos.escribirActividad(actividad))
             {          	
             	 msg = "Actividad creada correctamente";

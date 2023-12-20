@@ -1,0 +1,52 @@
+/* Estilos para la disposición en paralelo */
+.table-container {
+    display: flex;
+    justify-content: space-between;
+    height: 80vh; /* El 80% del alto de la ventana */
+    margin-top: 5%; /* Ajusta según sea necesario */
+}
+
+/* Estilos para cada parte */
+.actividades-container, .form-container, .campamentos-container {
+    width: 30%; /* El 30% del ancho de la ventana */
+    margin-top: 10px; /* Ajusta según sea necesario */
+}
+
+/* Estilos para las tablas */
+#actividades-list, #campamentos-list {
+    width: 100%; /* Ocupa el 100% del contenedor */
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+#actividades-list, #campamentos-list th, #actividades-list, #campamentos-list td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+#actividades-list th, #campamentos-list th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+/* Otros estilos */
+.button-container {
+    margin-top: 20px;
+}
+
+.button-container form {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+
+/* Otros estilos */
+.button-container {
+    margin-top: 20px;
+}
+
+.button-container form {
+    display: inline-block;
+    margin-right: 10px;
+}

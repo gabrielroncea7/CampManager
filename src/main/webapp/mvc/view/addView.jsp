@@ -42,6 +42,7 @@ if(userBean.getEmail()==null || userBean.getEmail().isEmpty())
 
                     <%-- Muestra el mensaje si está presente --%>
 			<%
+			
 			    String msg =(String)request.getAttribute("msg");
 			    if (msg != null && !msg.isEmpty()) {
 			%>
