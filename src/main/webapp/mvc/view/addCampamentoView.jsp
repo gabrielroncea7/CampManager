@@ -2,7 +2,7 @@
  
  <div >
         <h2>Añadir Campamento</h2>
-        <form action="Practica3/crearActividad" method="post">
+        <form action="Practica3/crearCampamento" method="post">
             <label for="fechaInicio">Fecha de Inicio:</label>
             <input type="date" id="fechaInicio" name="fechaInicio" required>
             

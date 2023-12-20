@@ -1,6 +1,6 @@
    <div > 
         <h2>Añadir Actividad</h2>
-        <form action="<%= request.getContextPath() %>/crearActividad" method="post">
+        <form action="/Practica3/crearActividad" method="post">
             <label for="nombreActividad">Nombre de la Actividad:</label>
             <input type="text" id="nombreActividad" name="nombreActividad" required>
             
