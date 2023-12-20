@@ -1,7 +1,6 @@
 package es.uco.pw.servlets;
 
 import java.io.IOException;
-import java.sql.Date;
 import java.sql.ResultSet;
 
 import javax.servlet.RequestDispatcher;
@@ -12,8 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import es.uco.pw.business.Gestores.GestorCampamentos;
-import es.uco.pw.data.display.CustomerBean;
-import es.uco.pw.business.Actividad.Actividad_DTO;
 
 
 /**
@@ -37,36 +34,16 @@ public class SVMostrarCampamentosDisponibles extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		CustomerBean userBean = (CustomerBean) request.getSession().getAttribute("userBean");
-		
-		if(userBean != null)
-		{
-			if(userBean.getEmail()!=null)
-			{
-				
-				String fecha1String = request.getParameter("fecha1");
-				String fecha2String = request.getParameter("fecha2");
-				
-				Date fecha1 = Date.valueOf(fecha1String);
-				Date fecha2 = Date.valueOf(fecha2String);
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {			
+				String fecha1 = request.getParameter("fechaInicio");
+				String fecha2 = request.getParameter("fechaFin");
 				
 				ResultSet resultSet = GestorCampamentos.listarCampamentosDisponibles(fecha1, fecha2);
-				request.setAttribute("verCampamentos", resultSet);
-				RequestDispatcher rd = request.getRequestDispatcher("./mvc/view/campamentosDisponiblesView.jsp");
-				rd.forward(request, response);
-						
-			}
 				
-			else {
-				response.sendRedirect(request.getContextPath());
-			}
-		}
-		else {
-			response.sendRedirect(request.getContextPath());
-		}
+				request.setAttribute("verCampamentos", resultSet);
+				RequestDispatcher rd = request.getRequestDispatcher("/mvc/view/campamentosDisponiblesView.jsp");
+				rd.forward(request, response);				
 	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

@@ -25,7 +25,7 @@ public class GestorCampamentos {
     	return CampamentoDAO.listarCampamentos();
     }
     
-    public static ResultSet listarCampamentosDisponibles(Date fechaInicio, Date fechaFin) {
+    public static ResultSet listarCampamentosDisponibles(String fechaInicio, String fechaFin) {
     	return CampamentoDAO.listarCampamentosDisponibles(fechaInicio, fechaFin);
     }
     

@@ -5,10 +5,8 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 
 import es.uco.pw.business.Campamento.Campamento_DTO;
-import es.uco.pw.business.common.NivelEducativo_DTO;
 import es.uco.pw.data.common.DBConnection;
 import es.uco.pw.data.common.SQLQueries;
 
@@ -77,7 +75,7 @@ public class CampamentoDAO {
         }
     }
     
-    public static ResultSet listarCampamentosDisponibles(Date fechaInicio, Date fechaFin) {
+    public static ResultSet listarCampamentosDisponibles(String fechaInicio, String fechaFin) {
         DBConnection dbConnection = new DBConnection();
         Connection connection = dbConnection.getConnection();
 
@@ -86,8 +84,8 @@ public class CampamentoDAO {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(listarCampamentosDisponiblesQuery);
             
-            preparedStatement.setDate(1, fechaInicio);
-            preparedStatement.setDate(2, fechaFin);
+            preparedStatement.setString(1, fechaInicio);
+            preparedStatement.setString(2, fechaFin);
             
             ResultSet resultSet = preparedStatement.executeQuery();
 
