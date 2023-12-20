@@ -43,8 +43,7 @@ if(userBean.getEmail()==null || userBean.getEmail().isEmpty())
         <button type="submit">Modificar Datos</button>
     </form>
     
-    <form action="<%=request.getContextPath()%>/SVmostrarCampamentosDisponibles" method="GET">
-    <a href="<%=request.getContextPath()%>/SVmostrarCampamentosDisponibles">Reservas</a>
+    <form action="/Practica3/mostrarCampamentosDisponibles" method="GET">
     	<div class="flex-container">
 	        <div class="flex-item">
 	            <label for="birthdate">Fecha Inicio</label>
@@ -62,8 +61,5 @@ if(userBean.getEmail()==null || userBean.getEmail().isEmpty())
         <button type="submit">Ver campamentos disponibles</button>
     </form>
 </div>
-
-    <p style="color: red;">${requestScope.error}</p>
-
 </body>
 </html>

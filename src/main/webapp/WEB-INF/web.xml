@@ -47,18 +47,5 @@
   <servlet>
 <servlet-name>crearActividad</servlet-name>
 <servlet-class>es.uco.pw.servlets.SVCrearActividad</servlet-class>
-</servlet>
-
-
-  <servlet>
-<servlet-name>mostrarCampamentosDisponibles</servlet-name>
-<servlet-class>es.uco.pw.servlets.SVCampamentosDisponibles</servlet-class>
-</servlet>
-  <servlet-mapping>
-<servlet-name>mostrarCampamentosDisponibles</servlet-name>
-<url-pattern>/mostrarCampamentosDisponibles</url-pattern>
-</servlet-mapping>
-  
-  
-  
+</servlet>  
 </web-app>
