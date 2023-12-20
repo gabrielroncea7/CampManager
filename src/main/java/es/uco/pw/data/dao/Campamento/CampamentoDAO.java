@@ -77,7 +77,7 @@ public class CampamentoDAO {
         }
     }
     
-    public static ResultSet listarCampamentosDisponibles(Date fecha1, Date fecha2) {
+    public static ResultSet listarCampamentosDisponibles(Date fechaInicio, Date fechaFin) {
         DBConnection dbConnection = new DBConnection();
         Connection connection = dbConnection.getConnection();
 
@@ -86,8 +86,8 @@ public class CampamentoDAO {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(listarCampamentosDisponiblesQuery);
             
-            preparedStatement.setDate(1, fecha1);
-            preparedStatement.setDate(2, fecha2);
+            preparedStatement.setDate(1, fechaInicio);
+            preparedStatement.setDate(2, fechaFin);
             
             ResultSet resultSet = preparedStatement.executeQuery();
 

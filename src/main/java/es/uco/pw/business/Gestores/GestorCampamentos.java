@@ -2,6 +2,7 @@ package es.uco.pw.business.Gestores;
 
 import java.sql.Date;
 import java.sql.ResultSet;
+import java.time.LocalDate;
 
 import es.uco.pw.business.Actividad.Actividad_DTO;
 import es.uco.pw.business.Campamento.Campamento_DTO;
@@ -24,8 +25,8 @@ public class GestorCampamentos {
     	return CampamentoDAO.listarCampamentos();
     }
     
-    public static ResultSet listarCampamentosDisponibles(Date fecha1, Date fecha2) {
-    	return CampamentoDAO.listarCampamentosDisponibles(fecha1, fecha2);
+    public static ResultSet listarCampamentosDisponibles(Date fechaInicio, Date fechaFin) {
+    	return CampamentoDAO.listarCampamentosDisponibles(fechaInicio, fechaFin);
     }
     
     public static ResultSet listarCampamentosES() {

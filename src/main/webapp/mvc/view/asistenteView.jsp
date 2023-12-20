@@ -39,27 +39,31 @@ if(userBean.getEmail()==null || userBean.getEmail().isEmpty())
         <button type="submit">Desconectar</button>
     </form>
 
-    <form action="/Practica3/mvc/controller/controladorModificar" method="post">
+    <form action="/Practica3/mvc/view/ModificarDatosView.jsp" method="post">
         <button type="submit">Modificar Datos</button>
     </form>
     
-    <form action="../../java/es/uco/pw/servlets/SVMostrarCampamentosDisponibles.java" method="post">
+    <form action="<%=request.getContextPath()%>/SVmostrarCampamentosDisponibles" method="GET">
+    <a href="<%=request.getContextPath()%>/SVmostrarCampamentosDisponibles">Reservas</a>
     	<div class="flex-container">
 	        <div class="flex-item">
-	            <label for="birthdate">Fecha 1</label>
-	            <input type="date" id="fecha1" name="fecha1" required>
+	            <label for="birthdate">Fecha Inicio</label>
+	            <input type="date" id="fechaInicio" name="fechaInicio" required>
 	        </div>
     	</div>
     	<br>
     	<div class="flex-container">
 	        <div class="flex-item">
-	            <label for="birthdate">Fecha 2</label>
-	            <input type="date" id="fecha2" name="fecha2" required>
+	            <label for="birthdate">Fecha Fin</label>
+	            <input type="date" id="fechaFin" name="fechaFin" required>
 	        </div>
     	</div>
     
         <button type="submit">Ver campamentos disponibles</button>
     </form>
 </div>
+
+    <p style="color: red;">${requestScope.error}</p>
+
 </body>
 </html>
