@@ -41,7 +41,9 @@ public class SVMostrarCampamentosDisponibles extends HttpServlet {
 				ResultSet resultSet = GestorCampamentos.listarCampamentosDisponibles(fecha1, fecha2);
 				
 				request.setAttribute("verCampamentos", resultSet);
-				RequestDispatcher rd = request.getRequestDispatcher("/mvc/view/campamentosDisponiblesView.jsp");
+				request.setAttribute("fechaInicio", fecha1);
+				request.setAttribute("fechaFin", fecha2);
+				RequestDispatcher rd = request.getRequestDispatcher("/mvc/view/asistenteView.jsp");
 				rd.forward(request, response);				
 	}
 	/**
