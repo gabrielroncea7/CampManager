@@ -21,20 +21,23 @@ if(userBean.getEmail()==null || userBean.getEmail().isEmpty())
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="<%=request.getContextPath() %>/css/admin.css">
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/formularios.css">
+	
     <title>Página de Administrador</title>
 </head>
 <body>
 <body>
 <div class="big-button-container">
-    <button type="button" class="big-button" onclick="mostrarFormulario('addActividad')">Añadir Actividad</button>
-    <button type="button" class="big-button" onclick="mostrarFormulario('addMonitor')">Añadir Monitor</button>
-    <!-- Otros botones ... -->
+		<button type="button" class="big-button" onclick="mostrarFormulario('addActividad')">Añadir Actividad</button>
+   		<button type="button" class="big-button" onclick="mostrarFormulario('addMonitor')">Añadir Monitor</button>
+        <button type="button" class="big-button" onclick="mostrarFormulario('addCampamento')">Añadir Monitor</button>
 </div>
+
 
 <div class="form-container" id="addActividad" style="display: none;"></div>
 <div class="form-container" id="addMonitor" style="display: none;"></div>
+<div class="form-container" id="addCampamento" style="display: none;"></div>
 
-<!-- Otros elementos ... -->
 
 
 <div class="button-container">
