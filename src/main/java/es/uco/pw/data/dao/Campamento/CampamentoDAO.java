@@ -158,7 +158,25 @@ public class CampamentoDAO {
         }
         return false;
     }
+    
+    public static ResultSet listarCampamentosCriterios(String nivelEductivo) {
+        DBConnection dbConnection = new DBConnection();
+        Connection connection = dbConnection.getConnection();
 
+        String listarCampamentosCriteriosQuery = SQLQueries.getQuery("sql.listarCampamentosCriterios");
 
+        try {
+        	PreparedStatement preparedStatement = connection.prepareStatement(listarCampamentosCriteriosQuery);
+            preparedStatement.setString(1, nivelEductivo);
+            
+            ResultSet resultSet = preparedStatement.executeQuery();
 
+                 return resultSet;  	
+
+           
+        	} catch (SQLException e) {
+            e.printStackTrace();
+            return null; // En caso de error, devuelve null
+        }
+    }
 }

@@ -127,5 +127,10 @@ public class GestorCampamentos {
 	public static boolean mismoNivelEducativo(String nombre_Actividad, int idCampamento) {
 		return AsociarDAO.mismoNivelEducativo(nombre_Actividad, idCampamento);
 	}
+	
+    public static ResultSet listarCampamentosCriterios(String nivelEductivo)
+    {
+    	return CampamentoDAO.listarCampamentosCriterios(nivelEductivo);
+    }
 
 }
