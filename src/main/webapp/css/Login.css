@@ -10,7 +10,7 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background: url('fondo-login.jpg') no-repeat center center fixed;
+    background: url('fondo-login2.jpg') no-repeat center center fixed;
     background-size: 100%;
 }
 
@@ -43,6 +43,10 @@ input {
     padding-left: 30px;
 }
 
+.iniciarsesionbutton{
+	
+}
+
 .input-container {
     position: relative;
 }
@@ -67,6 +71,17 @@ button:hover {
     background-color: #1f8dd6;
 }
 
+.pure-button {
+    background-color: #1f8dd6;
+    color: white;
+    padding: 0.5em 2em;
+}
+
+.pure-button:hover{
+	background-color:#ddd;
+	color:black;
+
+}
 .register-link {
     margin-top: 15px;
     color: #666;

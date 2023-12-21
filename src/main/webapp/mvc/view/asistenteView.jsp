@@ -27,14 +27,8 @@ if (userBean.getEmail() == null || userBean.getEmail().isEmpty()) {
 	href="<%=request.getContextPath()%>/css/admin.css">
 </head>
 <body>
+<%@ include file="../../include/headerAsistente.jsp" %>
 
-	<h1>
-		Bienvenido,
-		<%=userBean.getNombre()%></h1>
-
-	<h2>
-		Fecha actual:
-		<%=java.time.LocalDate.now()%></h2>
 
 	<div>
 		<%
@@ -77,6 +71,18 @@ if (userBean.getEmail() == null || userBean.getEmail().isEmpty()) {
 					}
 					%> <%=monitor%>
 				</td>
+				<tr>
+						<td>
+							<form action="/Practica3/crearInscripcion" method="GET">
+									<div class="flex-item">		
+										<input type="hidden" id="idCampamento" name="idCampamento" value="<%= verCampamentos.getInt(1) %>">			
+										<label for="inscripcionCompleta">¿Desea una inscripcion completa?</label>
+	        							<input type="checkbox" id="inscripcionCompleta" name="inscripcionCompleta" value=true>
+										<button type="submit">Inscribirse</button>	
+									</div>
+							</form>
+						</td>
+					</tr>
 			</tr>
 		</table>
 		<%
@@ -84,7 +90,11 @@ if (userBean.getEmail() == null || userBean.getEmail().isEmpty()) {
 
 		}
 		%>
+<%----%>
 
+
+
+<%--LO ULTIMO--%>
 	</div>
 
 	<h2>Campamentos Inscritos:</h2>
@@ -98,8 +108,52 @@ if (userBean.getEmail() == null || userBean.getEmail().isEmpty()) {
 
 		<%=Inscripciones%>
 	</ul>
+	
 
-	<div>
+	<!-- Botones -->
+	<div class="centrado">
+
+		<form action="/Practica3/mostrarCampamentosDisponibles" method="GET">
+			<div class="flex-container">
+
+				<h3>Opcion 1: </h2>
+					<label for="fechaInicio">Fecha Inicio</label> <input type="date"
+						id="fechaInicio" name="fechaInicio" required>
+
+			</div>
+			<br>
+			<div class="flex-container">
+				<div class="flex-item">
+					<label for="fechaFin">Fecha Fin</label> <input type="date"
+						id="fechaFin" name="fechaFin" required>
+				</div>
+			</div><br>
+
+			<button type="submit" class="pure-button">Ver campamentos disponibles</button>
+		</form><br>
+		
+	<form action="/Practica3/SVMostrarCampamentoCriterios" method="GET">
+<h3>Buscar Campamento</h2>
+        
+        <label for="nivelEducativo">Nivel Educativo:</label>
+        <select id="nivel" name="nivel">
+        	<option value="" disabled selected>Selecciona una opción</option>
+            <option value="Infantil">Infantil</option>
+            <option value="Juvenil">Juvenil</option>
+            <option value="Adolescente">Adolescente</option>
+        </select>
+
+        <label for="plazas">Número mínimo de plazas disponibles:</label>
+        <input type="number" id="plazas" name="plazas" placeholder="Ingresa el número mínimo de plazas">
+
+        <button type="submit" class="pure-button">Buscar</button>
+    </form>
+	</div>
+	
+	<%--ESTO VA	 ABAJO--%>
+	
+	
+	<div class="divdisplay1">
 		<%
 		ResultSet verCampamentosCriterio = (ResultSet) request.getAttribute("verCampamentosCriterio");
 		if (verCampamentosCriterio != null) {
@@ -149,47 +203,11 @@ if (userBean.getEmail() == null || userBean.getEmail().isEmpty()) {
 		}
 		%>
 
-	</div>
-
-	<!-- Botones -->
-	<div class="button-container">
-		<form action="/Practica3/mvc/controller/logOutController.jsp"
-			method="post">
-			<button type="submit">Desconectar</button>
-		</form>
-
-		<form action="/Practica3/mvc/view/ModificarDatosView.jsp"
-			method="post">
-			<button type="submit">Modificar Datos</button>
-		</form>
-
-		<form action="/Practica3/mostrarCampamentosDisponibles" method="GET">
-			<div class="flex-container">
-				<div class="flex-item">
-					<label for="fechaInicio">Fecha Inicio</label> <input type="date"
-						id="fechaInicio" name="fechaInicio" required>
-				</div>
-			</div>
-			<br>
-			<div class="flex-container">
-				<div class="flex-item">
-					<label for="fechaFin">Fecha Fin</label> <input type="date"
-						id="fechaFin" name="fechaFin" required>
-				</div>
-			</div>
-
-			<button type="submit">Ver campamentos disponibles</button>
-		</form>
-		<form action="/Practica3/SVMostrarCampamentoCriterios" method="GET">
-			<label for="nivelEducativo">Selecciona una opción:</label> <select
-				name="nivelEducativo" id="nivelEducativo">
-				<option value="" disabled selected>Selecciona un nivel
-					educativo</option>
-				<option value="Infantil">Infantil</option>
-				<option value="Juvenil">Juvenil</option>
-				<option value="Adolescente">Adolescente</option>
-			</select> <button type="submit">Buscar campamento con criterio</button>
-		</form>
-	</div>
+	</div>	
+	
+	
+	
+	
+	
 </body>
 </html>

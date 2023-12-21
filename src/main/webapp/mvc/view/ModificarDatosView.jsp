@@ -15,9 +15,33 @@ if(userBean.getEmail()==null || userBean.getEmail().isEmpty())
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modificar Datos</title>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/admin.css">
 </head>
 <body>
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+ <link rel="stylesheet" href="<%=request.getContextPath() %>/css/asistente.css">
+<header class="navbar">
+    <div class="logo">
+        <a class="boton-header1">
+        <i class="fas fa-home">Inicio</i></a>
+    </div>
+
+    <div class="logout-button">
+        <a href="/Practica3/mvc/controller/logOutController.jsp">Desconectar</a>
+    </div>
+
+    
+</header>
+
+<footer class="footer l-box is-center">Proyecto Golfotron</footer>
+
+
+
+<div class="divGrandePrincipio"></div>
+
     <h2>Modificar Datos</h2>
+    <div class="centrado">
     <form action="/Practica3/mvc/controller/controladorModificar.jsp" method="post">
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" name="nombre" value="<%= userBean.getNombre() %>" required>
@@ -31,8 +55,14 @@ if(userBean.getEmail()==null || userBean.getEmail().isEmpty())
 		<label for="fechaNacimiento">Contraseña:</label>
         <input type="password" id="password" name="password" value="<%= userBean.getPassword() %>" required>
         <!-- Otros campos según sea necesario -->
-
-        <button type="submit">Guardar Cambios</button>
+		
+        <button type="submit" class="pure-button">Guardar Cambios</button>
     </form>
+    </div>
+    
+
+    
+    
+    
 </body>
 </html>

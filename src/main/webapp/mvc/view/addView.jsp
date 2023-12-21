@@ -26,12 +26,11 @@ if(userBean.getEmail()==null || userBean.getEmail().isEmpty())
     <title>Página de Administrador</title>
 </head>
 <body>
-<body>
-
+<%@ include file="../../include/headerAdministrador.jsp" %>
 <div class="big-button-container">
-		<button type="button" class="big-button" onclick="mostrarFormulario('addActividad')">Añadir Actividad</button>
-   		<button type="button" class="big-button" onclick="mostrarFormulario('addMonitor')">Añadir Monitor</button>
-        <button type="button" class="big-button" onclick="mostrarFormulario('addCampamento')">Añadir Campamento</button>
+		<button type="button" class="pure-button" onclick="mostrarFormulario('addActividad')">Añadir Actividad</button>
+   		<button type="button" class="pure-button" onclick="mostrarFormulario('addMonitor')">Añadir Monitor</button>
+        <button type="button" class="pure-button" onclick="mostrarFormulario('addCampamento')">Añadir Campamento</button>
 </div>
 
 
@@ -52,16 +51,6 @@ if(userBean.getEmail()==null || userBean.getEmail().isEmpty())
 			<%
 			    }
 			%>
-
-
-<div class="button-container">
-    <form action="/Practica3/mvc/controller/logOutController.jsp" method="post">
-        <button type="submit">Desconectar</button>
-    </form>
-
-    <form action="/Practica3/mvc/view/ModificarDatosView.jsp" method="post">
-        <button type="submit">Modificar Datos</button>
-    </form>
 </div>
 <script src="<%=request.getContextPath() %>/js/mostrarFormulario.js"></script>
 </body>

@@ -34,7 +34,7 @@
                 <i class="fas fa-lock"></i>
                 <input type="password" id="password" name="password" placeholder="Contraseña" required>
             </div>
-            <button type="submit">Iniciar Sesión</button>
+            <button type="submit" class="pure-button">Iniciar Sesión</button>
             <p class="register-link">¿No tienes una cuenta? <a href="mvc/view/registroView.jsp">Regístrate aquí</a></p>
         </form>
     </div>

@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<%=request.getContextPath() %>/css/admin.css">
-    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/formularios.css">
-    
+
     <title>Añadir Monitor</title>
 </head>
 <body>
@@ -22,7 +21,7 @@
             <label for="educadorEspecial">Educador Especial:</label>
             <input type="checkbox" id="educadorEspecial" name="educadorEspecial" value="True">
             
-            <button type="submit" class="big-button">Guardar Monitor</button>
+            <button type="submit" class="pure-button">Guardar Monitor</button>
         </form>
     </div>
 </body>

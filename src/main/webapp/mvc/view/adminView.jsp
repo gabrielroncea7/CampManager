@@ -24,6 +24,7 @@ if(userBean.getEmail()==null || userBean.getEmail().isEmpty())
     <title>Página de Administrador</title>
 </head>
 <body>
+<%@ include file="../../include/headerAdministrador.jsp" %>
 <%
 ResultSet resultSet = null;
 ResultSet resultSet2 = null;
@@ -33,13 +34,13 @@ Asistente_DTO asistente = new Asistente_DTO();
 
 		<div class="big-button-container">
 		    <form action="/Practica3/mvc/view/addView.jsp" method="get">
-		        <button type="submit" class="big-button">Dar de alta actividades, monitores y campamentos</button>
+		        <button type="submit" class="pure-button">Dar de alta actividades, monitores y campamentos</button>
 		    </form>
 		    <form action="/Practica3/asociarActividadCampamento" method="get">
-		        <button type="submit" class="big-button">Asociar actividades a campamentos</button>
+		        <button type="submit" class="pure-button">Asociar actividades a campamentos</button>
 		    </form>
 		    <form action="/Practica3/asociarMonitor" method="get">
-		        <button type="submit" class="big-button">Asociar monitores a actividades y campamentos</button>
+		        <button type="submit" class="pure-button">Asociar monitores a actividades y campamentos</button>
 		    </form>
 		</div>
                     <%-- Muestra el mensaje si está presente --%>
@@ -89,14 +90,6 @@ Asistente_DTO asistente = new Asistente_DTO();
 		}
 	%>
 
-<div class="button-container">
-    <form action="/Practica3/mvc/controller/logOutController.jsp" method="post">
-        <button type="submit">Desconectar</button>
-    </form>
 
-    <form action="/Practica3/mvc/view/ModificarDatosView.jsp" method="post">
-        <button type="submit">Modificar Datos</button>
-    </form>
-</div>
 </body>
 </html>

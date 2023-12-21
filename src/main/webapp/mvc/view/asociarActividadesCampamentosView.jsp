@@ -28,7 +28,7 @@ if(userBean.getEmail()==null || userBean.getEmail().isEmpty())
     <title>Página de Administrador</title>
 </head>
 <body>
-
+<%@ include file="../../include/headerAdministrador.jsp" %>
 
 <div class="table-container">
     <div class="actividades-container">
@@ -103,14 +103,5 @@ if(userBean.getEmail()==null || userBean.getEmail().isEmpty())
 
 
 
-<div class="button-container">
-    <form action="/Practica3/mvc/controller/logOutController.jsp" method="post">
-        <button type="submit">Desconectar</button>
-    </form>
-
-    <form action="/Practica3/mvc/view/ModificarDatosView.jsp" method="post">
-        <button type="submit">Modificar Datos</button>
-    </form>
-</div>
 </body>
 </html>

@@ -1,3 +1,9 @@
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/asistente.css">
+    <title>Página que se abre dentro de otra "añadir actividad"</title>
+</head>
    <div > 
         <h2>Añadir Actividad</h2>
         <form action="/Practica3/crearActividad" method="post">
@@ -23,7 +29,6 @@
             <label for="numMonitores">Número de Monitores:</label>
             <input type="number" id="numMonitores" name="numMonitores" required min="0">
             
-            <button type="submit" class="big-button">Guardar Actividad</button>
+            <button type="submit" class="pure-button">Guardar Actividad</button>
         </form>       
     </div>
-	    

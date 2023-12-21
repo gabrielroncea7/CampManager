@@ -1,3 +1,4 @@
+<%@ include file="../../include/headerAdministrador.jsp" %>
 <div>
     <h2>Asociar Monitor a Actividad</h2>
     <form action="#" method="post">

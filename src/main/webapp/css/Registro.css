@@ -4,7 +4,14 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
 }
-
+.register-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: url('fondo-login2.jpg') no-repeat center center fixed;
+    background-size: 100%;
+}
 .container {
     display: flex;
     align-items: center;
@@ -21,6 +28,17 @@ body {
     height: 60%;
     width: 35%;
     text-align: center;
+}
+.pure-button {
+    background-color: #1f8dd6;
+    color: white;
+    padding: 0.5em 2em;
+}
+
+.pure-button:hover{
+	background-color:#ddd;
+	color:black;
+
 }
 
 h2 {

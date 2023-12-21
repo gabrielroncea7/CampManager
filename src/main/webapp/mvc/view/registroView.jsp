@@ -8,7 +8,7 @@
 </head>
 <body>
 
-    <div class="container">
+    <div class="register-container">
 <form action="../controller/controladorRegistro.jsp" method="POST" class="register-form">
     <%-- Muestra el mensaje si está presente --%>
     <%
@@ -64,7 +64,7 @@
 	        <input type="checkbox" id="isAdmin" name="isAdmin" value="True">
 	    </div>
 	</div>
-    <button type="submit">Registrarse</button>
+    <button type="submit" class="pure-button">Registrarse</button>
 
     <!-- Enlace para "Ya tengo cuenta" -->
     <p>¿Ya tienes cuenta? <a href="/Practica3">Iniciar sesión</a></p>
