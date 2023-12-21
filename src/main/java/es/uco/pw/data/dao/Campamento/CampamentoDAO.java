@@ -138,6 +138,27 @@ public class CampamentoDAO {
             return null; // En caso de error, devuelve null
         }
     }
+    
+    public static boolean existeCampamento(int id_Campamento) {
+        DBConnection dbConnection = new DBConnection();
+        Connection connection = dbConnection.getConnection();
+
+        String existeCampamentoQuery = SQLQueries.getQuery("sql.existeCampamento");
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(existeCampamentoQuery)) {
+            preparedStatement.setInt(1, id_Campamento);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                int count = resultSet.getInt(1);
+                return count > 0;  // Si count > 0, significa que la actividad existe
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
 
 
 }

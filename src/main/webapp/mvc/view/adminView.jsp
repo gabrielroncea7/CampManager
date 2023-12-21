@@ -38,11 +38,22 @@ Asistente_DTO asistente = new Asistente_DTO();
 		    <form action="/Practica3/asociarActividadCampamento" method="get">
 		        <button type="submit" class="big-button">Asociar actividades a campamentos</button>
 		    </form>
-		    <form action="/Practica3/mvc/controller/otraPagina3.jsp" method="get">
+		    <form action="/Practica3/asociarMonitor" method="get">
 		        <button type="submit" class="big-button">Asociar monitores a actividades y campamentos</button>
 		    </form>
 		</div>
-
+                    <%-- Muestra el mensaje si está presente --%>
+			<%
+			
+			    String msg =(String)request.getAttribute("msg");
+			    if (msg != null && !msg.isEmpty()) {
+			%>
+				<div class="form-container">
+			    <h2><%= msg %></h2>
+			    </div>
+			<%
+			    }
+			%>
 	
     <h1>Listado de Campamentos</h1>
 	<%

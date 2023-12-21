@@ -7,39 +7,32 @@
 }
 
 /* Estilos para cada parte */
-.actividades-container, .form-container, .campamentos-container {
-    width: 30%; /* El 30% del ancho de la ventana */
+.actividades-container, .monitor-container {
+    width: 20%; /* Ajustado para dar más espacio a campamentos */
+    margin-top: 10px; /* Ajusta según sea necesario */
+}
+.campamentos-container {
+    width: 30%; /* Ajustado para dar más espacio a campamentos */
     margin-top: 10px; /* Ajusta según sea necesario */
 }
 
 /* Estilos para las tablas */
-#actividades-list, #campamentos-list {
+#actividades-list, #campamentos-list, #monitores-list {
     width: 100%; /* Ocupa el 100% del contenedor */
     border-collapse: collapse;
-    margin-bottom: 20px;
+    margin-bottom: 10px; /* Ajustado para acercar las tablas */
 }
 
-#actividades-list, #campamentos-list th, #actividades-list, #campamentos-list td {
+#actividades-list, #campamentos-list, #monitores-list th, #actividades-list, #campamentos-list, #monitores-list td {
     border: 1px solid #ddd;
-    padding: 8px;
+    padding: 5px; /* Ajustado para reducir el espacio entre celdas */
     text-align: left;
 }
 
-#actividades-list th, #campamentos-list th {
-    background-color: #4CAF50;
+#actividades-list th, #campamentos-list th, #monitores-list th {
+    background-color: #1f8dd6;
     color: white;
 }
-
-/* Otros estilos */
-.button-container {
-    margin-top: 20px;
-}
-
-.button-container form {
-    display: inline-block;
-    margin-right: 10px;
-}
-
 
 /* Otros estilos */
 .button-container {

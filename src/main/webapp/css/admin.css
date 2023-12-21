@@ -8,6 +8,15 @@ h1 {
     color: #333;
 }
 
+.form-container {
+    width: 300px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
 #campamentos-list {
     margin-top: 20px;
     border-collapse: collapse;
@@ -30,7 +39,7 @@ h1 {
 }
 
 button {
-    background-color: #4CAF50;
+    background-color: #1f8dd6;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -42,7 +51,7 @@ button {
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #1f8dd6;
 }
 
 /* Estilos para la posición de los botones */
@@ -70,7 +79,7 @@ button:hover {
 
 /* Estilos para los botones grandes */
 .big-button {
-    background-color: #4CAF50;
+    background-color: #1f8dd6;
     color: white;
     border: none;
     padding: 20px;
@@ -84,7 +93,7 @@ button:hover {
     margin: 0 auto; /* Añadido para centrar el texto */
 }
 .big-button:hover {
-    background-color: #45a049;
+    background-color: #1f8dd6;
 }
 
 

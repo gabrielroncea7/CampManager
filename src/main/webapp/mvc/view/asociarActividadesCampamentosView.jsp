@@ -33,7 +33,7 @@ if(userBean.getEmail()==null || userBean.getEmail().isEmpty())
 <div class="table-container">
     <div class="actividades-container">
         <h2>Actividades:</h2>
-        <table id="actividades-list">
+        <table id="campamentos-list">
             <tr>
                 <th>Nombre</th>
                 <th>Nivel Educativo</th>

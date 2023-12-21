@@ -20,7 +20,7 @@ li {
 
 /* Estilos para los botones */
 button {
-    background-color: #4CAF50; /* Color de fondo verde */
+    background-color: #1f8dd6; /* Color de fondo verde */
     color: white; /* Color del texto blanco */
     border: none; /* Sin borde */
     padding: 10px 20px; /* Ajuste del espaciado interno */
@@ -32,7 +32,7 @@ button {
 }
 
 button:hover {
-    background-color: #45a049; /* Cambia el color de fondo al pasar el mouse */
+    background-color: #1f8dd6; /* Cambia el color de fondo al pasar el mouse */
 }
 
 /* Estilos para la posición de los botones */
