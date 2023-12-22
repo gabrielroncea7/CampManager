@@ -45,14 +45,8 @@ try {
     statement.setString(5, userBean.getEmail());  // Ajusta esto según tu modelo
 
     // Ejecutar la actualización
-    int filasActualizadas = statement.executeUpdate();
+    statement.executeUpdate();
 
-    // Comprobar si se realizaron actualizaciones
-    if (filasActualizadas > 0) {
-        out.println("¡Datos actualizados correctamente!");
-    } else {
-        out.println("No se realizaron actualizaciones.");
-    }
 
     // Cerrar la conexión y la declaración
     statement.close();
@@ -60,6 +54,5 @@ try {
 
 } catch (Exception e) {
     e.printStackTrace();
-    out.println("Error en la conexión o actualización de la base de datos.");
 }
 %>
