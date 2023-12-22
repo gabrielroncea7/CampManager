@@ -83,7 +83,6 @@ public class SVAsociarActividadCampamento extends HttpServlet {
 		HttpSession session = request.getSession();
 		CustomerBean userBean = (CustomerBean) session.getAttribute("userBean");
 		String msg = "No se ha podido hacer la asociación";
-		RequestDispatcher rd;
 		if (userBean != null && userBean.getEmail() != null) {
 			if (GestorCampamentos.existeActividad(request.getParameter("nombreActividad"))) {
 				if (GestorCampamentos.existeCampamento(Integer.parseInt(request.getParameter("idCampamento")))) {

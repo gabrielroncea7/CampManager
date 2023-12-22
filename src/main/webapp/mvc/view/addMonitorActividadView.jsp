@@ -1,7 +1,7 @@
 <div>
     <h2>Asociar Monitor a Actividad</h2>
-    <form action="/Practica3/asociarMonitoresActividades" method="post">
-        <label for="idMonitor">Nombre del monitor:</label>
+    <form action="/Practica3/asociarMonitorActividad" method="post">
+        <label for="idMonitor">Id del monitor:</label>
         <input type="text" id="idMonitor" name="idMonitor" required>
 
         <label for="nombreActividad">Nombre de la actividad:</label>
