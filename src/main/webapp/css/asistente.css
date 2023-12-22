@@ -179,8 +179,14 @@ a.pure-button-primary {
     position: fixed;
     bottom: 0;
     width: 100%;
-}
+    margin-top:30px;
 
+}
+.mi-div7 {
+    margin-top: 20px; /* Ajusta la cantidad de espacio según tus necesidades */
+    padding-bottom: 20px; /* Ajusta la cantidad de espacio según tus necesidades */
+    text-align: center;  
+}
 .footer a {
     color: #6FBEF3;
     text-decoration: none;

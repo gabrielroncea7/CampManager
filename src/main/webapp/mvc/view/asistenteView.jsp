@@ -86,7 +86,7 @@ if (userBean.getEmail() == null || userBean.getEmail().isEmpty()) {
 	<%--ESTO VA	 ABAJO--%>
 
 
-	<div class="divdisplay1">
+	<div>
 		<%
 		ResultSet verCampamentosCriterio = (ResultSet) request.getAttribute("verCampamentosCriterio");
 		if (verCampamentosCriterio != null) {
@@ -137,7 +137,7 @@ if (userBean.getEmail() == null || userBean.getEmail().isEmpty()) {
 		%>
 
 	</div>
-	<div>
+	<div class="mi-div7">
 		<%
 		ResultSet verCampamentos = (ResultSet) request.getAttribute("verCampamentos");
 		if (verCampamentos != null) {
@@ -151,7 +151,7 @@ if (userBean.getEmail() == null || userBean.getEmail().isEmpty()) {
 		<%
 		while (verCampamentos.next()) {
 		%>
-		<table id="campamentos-list">
+		<table id="campamentos-list" class="tabla1">
 			<tr>
 				<th>Id de campamento</th>
 				<th>Fecha de Inicio</th>

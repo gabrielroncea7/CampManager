@@ -3,7 +3,7 @@
 <header class="navbar">
     <div class="logo">
         <a href="/Practica3/mvc/view/asistenteView.jsp" class="boton-header1">
-        <i class="fas fa-home">Inicio</i></a>
+        <i class="fas fa-home">Rektrasito</i></a>
     </div>
 
     <div class="logout-button">
@@ -19,4 +19,4 @@
     
 </header>
 
-<footer class="footer l-box is-center">Proyecto Golfotron</footer>
+<footer class="footer">Area Asistente</footer>
