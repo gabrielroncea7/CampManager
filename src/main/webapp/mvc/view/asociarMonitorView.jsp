@@ -24,11 +24,9 @@ if(userBean.getEmail()==null || userBean.getEmail().isEmpty())
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="<%=request.getContextPath() %>/css/admin.css">
 	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/formularios.css">
-	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/asociar.css">
 	
     <title>Página de Administrador</title>
 </head>
-<body>
 <body>
 
 <div class="big-button-container">
