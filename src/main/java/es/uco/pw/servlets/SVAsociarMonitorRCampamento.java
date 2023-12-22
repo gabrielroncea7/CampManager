@@ -41,8 +41,14 @@ public class SVAsociarMonitorRCampamento extends HttpServlet {
 			{
 				if(GestorCampamentos.existeCampamento(Integer.parseInt(request.getParameter("idCampamento")))) {
 					if(GestorCampamentos.existeMonitorCampamento(Integer.parseInt(request.getParameter("idMonitor")), Integer.parseInt(request.getParameter("idCampamento")))) {
-						GestorCampamentos.insertarMonitorCampamento(Integer.parseInt(request.getParameter("idMonitor")), Integer.parseInt(request.getParameter("idCampamento")));
-						msg = "Monitor responsable asociado correctamente";
+						if(GestorCampamentos.asociarMonitorCampamento(Integer.parseInt(request.getParameter("idMonitor")), Integer.parseInt(request.getParameter("idCampamento"))))
+						{
+							msg = "Monitor responsable asociado correctamente";
+
+						}
+						else {
+							msg = "No se ha podido asociar el monitor";
+						}
 
 					}else {
 						msg = "No se puede asociar el monitor a ese campamento";

@@ -133,4 +133,10 @@ public class GestorCampamentos {
     	return CampamentoDAO.listarCampamentosCriterios(nivelEductivo);
     }
 
+	public static boolean existeMonitorEspecial(int idMonitor) {
+		// TODO Auto-generated method stub
+    	return MonitorDAO.existeMonitorEspecial(idMonitor);
+
+	}
+
 }
