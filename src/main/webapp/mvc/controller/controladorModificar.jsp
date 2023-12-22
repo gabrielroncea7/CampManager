@@ -3,7 +3,7 @@
 <%@ page import="java.net.URLEncoder" %>
 <%@ page import="es.uco.pw.business.Gestores.GestorUsuarios,es.uco.pw.business.Usuario.UsuarioDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="java.sql.Connection, java.sql.DriverManager, java.sql.PreparedStatement, java.io.PrintWriter" %>
+<%@ page import="java.sql.Connection, java.sql.DriverManager, java.sql.PreparedStatement, java.io.PrintWriter, es.uco.pw.data.common.SQLQueries, es.uco.pw.data.common.DBConnection" %>
 <jsp:useBean id="userBean" scope="session" class="es.uco.pw.data.display.CustomerBean"></jsp:useBean>
 
 <%
@@ -25,17 +25,16 @@ String nuevaFechaNacimiento = request.getParameter("fechaNacimiento");
 String nuevaPassword = request.getParameter("password");
 
 // Realizar la conexión a la base de datos (ajusta estos valores según tu configuración)
-String jdbcUrl = "jdbc:mysql://oraclepr.uco.es:3306/i02rafea";
-String dbUser = "i02rafea";
-String dbPassword = "usuario";
+DBConnection dbConnection = new DBConnection();
+Connection connection = dbConnection.getConnection();
+String modificarDatosQuery = SQLQueries.getQuery("sql.modificarDatos");
 
 try {
-	Class.forName("com.mysql.jdbc.Driver");
-    Connection connection = DriverManager.getConnection(jdbcUrl, dbUser, dbPassword);
+
 
     // Preparar la sentencia SQL para la actualización
-    String sql = "UPDATE Usuarios SET nombre=?, apellido=?, fechaNacimiento=?, password=? WHERE email=?";
-    PreparedStatement statement = connection.prepareStatement(sql);
+
+    PreparedStatement statement = connection.prepareStatement(modificarDatosQuery);
 
     // Establecer los valores de los parámetros en la sentencia SQL
     statement.setString(1, nuevoNombre);
