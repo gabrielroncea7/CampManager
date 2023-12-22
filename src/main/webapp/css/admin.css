@@ -114,4 +114,11 @@ button:hover {
     background-color: #1f8dd6;
 }
 
+.divdisplay1 {
+    margin-top: 20px; /* Ajusta la cantidad de espacio según tus necesidades */
+    padding-bottom: 2000px; /* Ajusta la cantidad de espacio según tus necesidades */
+    text-align: center;
+    background-color: #f0f0f0; /* Color de fondo opcional */
+}
+
 

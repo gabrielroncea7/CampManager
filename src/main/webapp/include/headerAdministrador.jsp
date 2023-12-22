@@ -19,4 +19,4 @@
 
 </header>
 
-<footer class="footer l-box is-center">Proyecto Golfotron</footer>
+<footer class="footer l-box is-center">Area Administrador</footer>
