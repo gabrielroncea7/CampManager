@@ -27,116 +27,27 @@ if (userBean.getEmail() == null || userBean.getEmail().isEmpty()) {
 	href="<%=request.getContextPath()%>/css/admin.css">
 </head>
 <body>
-<%@ include file="../../include/headerAsistente.jsp" %>
-		<%
-		ResultSet verCampamentos = (ResultSet) request.getAttribute("verCampamentos");
-		if (verCampamentos != null) {
-		%>
-		<h2>
-			Campamentos disponibles entre
-			<%=request.getAttribute("fechaInicio")%>
-			y
-			<%=request.getAttribute("fechaFin")%></h2>
-
-		<%
-		while (verCampamentos.next()) {
-		%>
-		<table id="campamentos-list">
-			<tr>
-				<th>Id de campamento</th>
-				<th>Fecha de Inicio</th>
-				<th>Fecha de Fin</th>
-				<th>Nivel educativo</th>
-				<th>Numero Maximo Asistentes</th>
-				<th>Asistentes inscritos</th>
-				<th>¿Monitor asignado?</th>
-			</tr>
-			<tr>
-				<td><%=verCampamentos.getInt(1)%></td>
-				<td><%=verCampamentos.getString(2)%></td>
-				<td><%=verCampamentos.getString(3)%></td>
-				<td><%=verCampamentos.getString(4)%></td>
-				<td><%=verCampamentos.getInt(5)%></td>
-				<td><%=verCampamentos.getInt(6)%></td>
-				<td>
-					<%
-					String monitor;
-					if (verCampamentos.getBoolean(7)) {
-						monitor = "Si";
-					} else {
-						monitor = "No";
-					}
-					%> <%=monitor%>
-				</td>
-				<tr>
-						<td>
-							<form action="/Practica3/crearInscripcion" method="GET">
-									<div class="flex-item">		
-										<input type="hidden" id="idCampamento" name="idCampamento" value="<%= verCampamentos.getInt(1) %>">			
-										<label for="inscripcionCompleta">¿Desea una inscripcion completa?</label>
-	        							<input type="checkbox" id="inscripcionCompleta" name="inscripcionCompleta" value=true>
-										<button type="submit">Inscribirse</button>	
-									</div>
-							</form>
-						</td>
-					</tr>
-			</tr>
-		</table>
-		<%
-		}
-
-		}
-		%>
-	</div>
-	<br><br><br>
-		<div>
-			<h2>Bienvenido, <%= userBean.getNombre()%></h2>
-			
-			<h2>Fecha actual: <%= java.time.LocalDate.now()%></h2>
-		</div>
-		<div>
-		<div class="centrado">
-		<h2>Campamentos en los que estas inscrito:</h2>
-		<form action="/Practica3/mostrarInscripciones" method="GET">
-		<div class="flex-item">
-			<button class="pure-button" type="submit">Mostrar</button>
-		</div>
-		</form>
-		<%
-		ResultSet verInscripciones = (ResultSet) request.getAttribute("verInscripciones");
-		if (verInscripciones != null) {
-
-		while (verInscripciones.next()) {
-		%>
-		<table id="campamentos-list">
-			<tr>
-				<th>Id de campamento</th>
-				<th>Fecha de inscripcion</th>
-				<th>Precio</th>
-			</tr>
-			<tr>
-				<td><%=verInscripciones.getInt(1)%></td>
-				<td><%=verInscripciones.getString(2)%></td>
-				<td><%=verInscripciones.getString(3)%></td>
-			<tr>
-			</tr>
-		</table>
-		<%
-		}
-
-		}
-		%>
-	</div>
-
-	<!-- Botones -->
+	<%--AQUI EMPIEZAN LOS BOTONES--%>
+	<%@ include file="../../include/headerAsistente.jsp"%>
+	<br>
+	<br>
+	<br>
 	<div class="centrado">
+		<div>
+			<h2>
+				Bienvenido,
+				<%=userBean.getNombre()%></h2>
 
+			<h2>
+				Fecha actual:
+				<%=java.time.LocalDate.now()%></h2>
+		</div>
 		<form action="/Practica3/mostrarCampamentosDisponibles" method="GET">
 			<div class="flex-container">
 
 				<h3>Buscar campamento entre fechas</h3>
-					<label for="fechaInicio">Fecha Inicio</label> <input type="date"
-						id="fechaInicio" name="fechaInicio" required>
+				<label for="fechaInicio">Fecha Inicio</label> <input type="date"
+					id="fechaInicio" name="fechaInicio" required>
 
 			</div>
 			<br>
@@ -145,32 +56,36 @@ if (userBean.getEmail() == null || userBean.getEmail().isEmpty()) {
 					<label for="fechaFin">Fecha Fin</label> <input type="date"
 						id="fechaFin" name="fechaFin" required>
 				</div>
-			</div><br>
+			</div>
+			<br>
 
-			<button type="submit" class="pure-button">Ver campamentos disponibles</button>
-		</form><br>
-		
-	<form action="/Practica3/SVMostrarCampamentoCriterios" method="GET">
-<h3>Buscar campamento por nivel educativo o minimo de plazas</h3>
-        
-        <label for="nivelEducativo">Nivel Educativo:</label>
-        <select id="nivel" name="nivel">
-        	<option value="" disabled selected>Selecciona una opción</option>
-            <option value="Infantil">Infantil</option>
-            <option value="Juvenil">Juvenil</option>
-            <option value="Adolescente">Adolescente</option>
-        </select>
+			<button type="submit" class="pure-button">Ver campamentos
+				disponibles</button>
+		</form>
+		<br>
 
-        <label for="plazas">Número mínimo de plazas disponibles:</label>
-        <input type="number" id="plazas" name="plazas" placeholder="Ingresa el número mínimo de plazas">
+		<form action="/Practica3/SVMostrarCampamentoCriterios" method="GET">
+			<h3>Buscar campamento por nivel educativo o minimo de plazas</h3>
 
-        <button type="submit" class="pure-button">Buscar</button>
-    </form>
+			<label for="nivelEducativo">Nivel Educativo:</label> <select
+				id="nivel" name="nivel">
+				<option value="" disabled selected>Selecciona una opción</option>
+				<option value="Infantil">Infantil</option>
+				<option value="Juvenil">Juvenil</option>
+				<option value="Adolescente">Adolescente</option>
+			</select>
+			<button type="submit" class="pure-button">Buscar</button>
+			<br> <label for="plazas">Número mínimo de plazas
+				disponibles:</label> <input type="number" id="plazas" name="plazas"
+				placeholder="Ingresa el número mínimo de plazas">
+
+			<button type="submit" class="pure-button">Buscar</button>
+		</form>
 	</div>
-	
+	<%--AQUI ACABAN LOS BOTONES--%>
 	<%--ESTO VA	 ABAJO--%>
-	
-	
+
+
 	<div class="divdisplay1">
 		<%
 		ResultSet verCampamentosCriterio = (ResultSet) request.getAttribute("verCampamentosCriterio");
@@ -221,7 +136,68 @@ if (userBean.getEmail() == null || userBean.getEmail().isEmpty()) {
 		}
 		%>
 
-	</div>	
-	
+	</div>
+	<div>
+		<%
+		ResultSet verCampamentos = (ResultSet) request.getAttribute("verCampamentos");
+		if (verCampamentos != null) {
+		%>
+		<h2>
+			Campamentos disponibles entre
+			<%=request.getAttribute("fechaInicio")%>
+			y
+			<%=request.getAttribute("fechaFin")%></h2>
+
+		<%
+		while (verCampamentos.next()) {
+		%>
+		<table id="campamentos-list">
+			<tr>
+				<th>Id de campamento</th>
+				<th>Fecha de Inicio</th>
+				<th>Fecha de Fin</th>
+				<th>Nivel educativo</th>
+				<th>Numero Maximo Asistentes</th>
+				<th>Asistentes inscritos</th>
+				<th>¿Monitor asignado?</th>
+			</tr>
+			<tr>
+				<td><%=verCampamentos.getInt(1)%></td>
+				<td><%=verCampamentos.getString(2)%></td>
+				<td><%=verCampamentos.getString(3)%></td>
+				<td><%=verCampamentos.getString(4)%></td>
+				<td><%=verCampamentos.getInt(5)%></td>
+				<td><%=verCampamentos.getInt(6)%></td>
+				<td>
+					<%
+					String monitor;
+					if (verCampamentos.getBoolean(7)) {
+						monitor = "Si";
+					} else {
+						monitor = "No";
+					}
+					%> <%=monitor%>
+				</td>
+			<tr>
+				<td>
+					<form action="/Practica3/crearInscripcion" method="GET">
+						<div class="flex-item">
+							<input type="hidden" id="idCampamento" name="idCampamento"
+								value="<%=verCampamentos.getInt(1)%>"> <label
+								for="inscripcionCompleta">¿Desea una inscripcion
+								completa?</label> <input type="checkbox" id="inscripcionCompleta"
+								name="inscripcionCompleta" value=true>
+							<button type="submit">Inscribirse</button>
+						</div>
+					</form>
+				</td>
+			</tr>
+		</table>
+		<%
+		}
+
+		}
+		%>
+	</div>
 </body>
 </html>
