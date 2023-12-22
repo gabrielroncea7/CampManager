@@ -216,26 +216,36 @@ public class InscripcionDAO {
 
 	    String actualizarinscripcionQuery = SQLQueries.getQuery("sql.actualizarinscripcion");
 
-	    try(PreparedStatement preparedStatement = connection.prepareStatement(actualizarinscripcionQuery)) {
+	    try {
+	    	PreparedStatement preparedStatement = connection.prepareStatement(actualizarinscripcionQuery);
 		        preparedStatement.setInt(1, Id_asistente);
 		        preparedStatement.setInt(2, Id_Campamento);
-		        int filasAfectadas = preparedStatement.executeUpdate();
+		        preparedStatement.executeUpdate();
 	
-		        if (filasAfectadas > 0) {
-	                // Actualizar el número de asistentes inscritos en el campamento
-		        	String eliminarInscripcionQuery = SQLQueries.getQuery("sql.eliminarInscripcion");
-	                
-
+		       
+                // Actualizar el número de asistentes inscritos en el campamento
+	        	String eliminarInscripcionQuery = SQLQueries.getQuery("sql.eliminarInscripcion");
+                
+	        	try {
 	                PreparedStatement updateStatement = connection.prepareStatement(eliminarInscripcionQuery);
-	                preparedStatement.setInt(1, Id_asistente);
-			        preparedStatement.setInt(2, Id_Campamento);
-	                updateStatement.executeUpdate();
-	            }
-	            return filasAfectadas > 0;
-	        } catch (SQLException e) {
-	        	e.printStackTrace();	}
-		return false;
-	}
+	                updateStatement.setInt(1, Id_asistente);
+	                updateStatement.setInt(2, Id_Campamento);
+			        updateStatement.executeUpdate();
+	        	} catch (SQLException e) {
+	                e.printStackTrace();
+	                return false;
+	            } 
+
+                return true;
+	            
+	   
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            dbConnection.closeConnection(); // Cerrar la conexión después de su uso
+        }
+    }
 	
 	public static boolean ComprobarInscripcion(int Id_asistente, int Id_Campamento) {
 		DBConnection dbConnection = new DBConnection();

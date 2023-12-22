@@ -74,7 +74,9 @@ if (userBean.getEmail() == null || userBean.getEmail().isEmpty()) {
 				</td>
 			</tr>
 		</table>
-		<form action="/Practica3/SVCancelarInscripcion" method="post">
+		<form action="/Practica3/cancelarInscripcion" method="post">
+		<input type="hidden" id="idCampamento" name="idCampamento"
+								value="<%=verInscripciones.getInt(3)%>">
 			<button type="submit">Cancelar Inscripcion</button>
 		</form>
 		<%

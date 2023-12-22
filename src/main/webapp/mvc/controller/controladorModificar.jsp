@@ -18,6 +18,8 @@ if(userBean.getEmail()==null || userBean.getEmail().isEmpty())
 %>
 
 <%
+String nextPage = "";
+String nextmessagepage = "";
 // Recuperar los parámetros del formulario
 String nuevoNombre = request.getParameter("nombre");
 String nuevoApellido = request.getParameter("apellido");
@@ -28,6 +30,7 @@ String nuevaPassword = request.getParameter("password");
 DBConnection dbConnection = new DBConnection();
 Connection connection = dbConnection.getConnection();
 String modificarDatosQuery = SQLQueries.getQuery("sql.modificarDatos");
+UsuarioDTO usuarioDTO = GestorUsuarios.listarUsuario(userBean.getEmail(), nuevaPassword);
 
 try {
 
@@ -45,13 +48,31 @@ try {
 
     // Ejecutar la actualización
     statement.executeUpdate();
-
-
-    // Cerrar la conexión y la declaración
-    statement.close();
-    connection.close();
+    
+       
 
 } catch (Exception e) {
     e.printStackTrace();
 }
+DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+userBean.setNombre(nuevoNombre);
+userBean.setApellidos(nuevoApellido);
+userBean.setEmail(usuarioDTO.getEmail());
+userBean.setFechaNacimiento(LocalDate.parse(nuevaFechaNacimiento, formatter));
+userBean.setPassword(nuevaPassword);
+userBean.setAdmin(usuarioDTO.isAdmin());
+
+if(usuarioDTO.isAdmin())
+{
+     nextPage = "../view/adminView.jsp";  
+ 	nextmessagepage ="Datos Actualizados";
+}
+else
+{
+	nextPage = "/Practica3/mostrarInscripciones";    
+	nextmessagepage ="Datos Actualizados";
+}
+response.sendRedirect(nextPage + "?message=" + URLEncoder.encode(nextmessagepage, "UTF-8"));
+
 %>

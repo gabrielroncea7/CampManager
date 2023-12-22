@@ -15,7 +15,7 @@ import es.uco.pw.data.display.CustomerBean;
 /**
  * Servlet implementation class SVCancelarInscripcion
  */
-@WebServlet("/SVCancelarInscripcion")
+@WebServlet(name="cancelarInscripcion", urlPatterns = "/cancelarInscripcion")
 public class SVCancelarInscripcion extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -36,9 +36,8 @@ public class SVCancelarInscripcion extends HttpServlet {
         
         if (userBean != null && userBean.getEmail() != null) {
             
-            String idCampamentoStr = request.getParameter("idCampamento");
-
-            int idCampamento = Integer.parseInt(idCampamentoStr);
+ 
+            int idCampamento = Integer.parseInt(request.getParameter("idCampamento"));
             int idAsistente = GestorUsuarios.obtenerAsistenteUsuario(userBean.getEmail());
             
 			request.setAttribute("idCampamento", idCampamento);
