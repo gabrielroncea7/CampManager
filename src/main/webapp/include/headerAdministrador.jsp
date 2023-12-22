@@ -2,7 +2,7 @@
  <link rel="stylesheet" href="<%=request.getContextPath() %>/css/asistente.css">
 <header class="navbar">
     <div class="logo">
-        <a class="boton-header1">
+        <a  href="/Practica3/mvc/view/adminView.jsp" class="boton-header1">
         <i class="fas fa-home">Rektrasito</i></a>
     </div>
 

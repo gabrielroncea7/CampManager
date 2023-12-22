@@ -51,7 +51,7 @@ if(userBean.getEmail()==null || userBean.getEmail().isEmpty())
 			<%
 			    }
 			%>
-</div>
+
 <script src="<%=request.getContextPath() %>/js/mostrarFormulario.js"></script>
 </body>
 </html>

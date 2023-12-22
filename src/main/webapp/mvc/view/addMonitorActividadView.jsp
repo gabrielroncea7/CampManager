@@ -1,7 +1,6 @@
-<%@ include file="../../include/headerAdministrador.jsp" %>
 <div>
     <h2>Asociar Monitor a Actividad</h2>
-    <form action="#" method="post">
+    <form action="/Practica3/asociarMonitoresActividades" method="post">
         <label for="idMonitor">Nombre del monitor:</label>
         <input type="text" id="idMonitor" name="idMonitor" required>
 

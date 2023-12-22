@@ -1,16 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="<%=request.getContextPath() %>/css/admin.css">
 
-    <title>Añadir Monitor</title>
-</head>
-<body>
     <div >
-        <h2>Añadir Monitor</h2>
+        <h2>A�adir Monitor</h2>
         <form action="/Practica3/crearMonitor" method="post">
             <label for="nombreMonitor">Nombre del Monitor:</label>
             <input type="text" id="nombreMonitor" name="nombreMonitor" required>
@@ -24,5 +14,4 @@
             <button type="submit" class="pure-button">Guardar Monitor</button>
         </form>
     </div>
-</body>
-</html>
+

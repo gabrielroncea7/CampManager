@@ -64,7 +64,7 @@ if(userBean.getEmail()==null || userBean.getEmail().isEmpty())
                 <th>Nivel Educativo</th>
                 <th>Monitores Asociados</th>
             </tr>
-            <%
+           <%
             ResultSet actividades = (ResultSet)request.getAttribute("verActividades");
             while(actividades.next()) {
             %>
