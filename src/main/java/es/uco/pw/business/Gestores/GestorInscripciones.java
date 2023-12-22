@@ -2,7 +2,6 @@ package es.uco.pw.business.Gestores;
 
 import java.sql.ResultSet;
 
-import es.uco.pw.business.Factory.Inscripcion_DTO;
 import es.uco.pw.data.dao.Inscripcion.InscripcionDAO;
 
 public class GestorInscripciones {
@@ -27,8 +26,8 @@ public class GestorInscripciones {
     	return InscripcionDAO.listarCampamentos();
     }
     
-	public static Boolean eliminarInscripcion(int idInscripcion) {
-		return InscripcionDAO.eliminarInscripcion(idInscripcion);
+	public static Boolean eliminarInscripcion(int Id_asistente, int Id_Campamento) {
+		return InscripcionDAO.eliminarInscripcion(Id_asistente, Id_Campamento);
 	}
 	
 	public static boolean ComprobarInscripcion(int Id_asistente, int Id_Campamento) {

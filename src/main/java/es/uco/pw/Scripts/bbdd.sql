@@ -138,7 +138,7 @@ CREATE TABLE `Usuarios` (
   `esAdmin` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=MyISAM AUTO_INCREMENT=45 DEFAULT CHARSET=latin1 AUTO_INCREMENT=45;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Estructura de tabla para la tabla Usuario_Asistente
 

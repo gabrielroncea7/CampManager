@@ -210,14 +210,15 @@ public class InscripcionDAO {
      * @return ResultSet con la información de las inscripciones.
      */
     
-	public static Boolean eliminarInscripcion(int idInscripcion) {
+	public static Boolean eliminarInscripcion(int Id_asistente, int Id_Campamento) {
 	    DBConnection dbConnection = new DBConnection();
 	    Connection connection = dbConnection.getConnection();
 
 	    String actualizarinscripcionQuery = SQLQueries.getQuery("sql.actualizarinscripcion");
 
 	    try(PreparedStatement preparedStatement = connection.prepareStatement(actualizarinscripcionQuery)) {
-		        preparedStatement.setInt(1, idInscripcion);
+		        preparedStatement.setInt(1, Id_asistente);
+		        preparedStatement.setInt(2, Id_Campamento);
 		        int filasAfectadas = preparedStatement.executeUpdate();
 	
 		        if (filasAfectadas > 0) {
@@ -226,7 +227,8 @@ public class InscripcionDAO {
 	                
 
 	                PreparedStatement updateStatement = connection.prepareStatement(eliminarInscripcionQuery);
-	                updateStatement.setInt(1, idInscripcion);
+	                preparedStatement.setInt(1, Id_asistente);
+			        preparedStatement.setInt(2, Id_Campamento);
 	                updateStatement.executeUpdate();
 	            }
 	            return filasAfectadas > 0;
