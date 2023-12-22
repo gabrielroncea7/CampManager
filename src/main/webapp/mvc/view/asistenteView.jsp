@@ -42,6 +42,53 @@ if (userBean.getEmail() == null || userBean.getEmail().isEmpty()) {
 				Fecha actual:
 				<%=java.time.LocalDate.now()%></h2>
 		</div>
+					<form action="/Practica3/SVMostrarInscripciones" method="GET">
+
+			<button type="submit" class="pure-button">Ver mis campamentos</button>
+		</form>
+			<div>
+		<%
+		ResultSet verInscripciones = (ResultSet) request.getAttribute("verInscripciones");
+		if (verInscripciones != null) {
+		%>
+		<h2>Mis campamentos:</h2>
+
+		<%
+		while (verInscripciones.next()) {
+		%>
+		<table id="campamentos-list">
+			<tr>
+				<th>Id de campamento</th>
+				<th>Fecha de Inicio</th>
+				<th>Fecha de Fin</th>
+				<th>Nivel educativo</th>
+			</tr>
+			<tr>
+				<td><%=verInscripciones.getInt(3)%></td>
+				<td><%=verInscripciones.getString(4)%></td>
+				<td><%=verInscripciones.getString(5)%></td>
+				<td>
+					<%
+					String monitor;
+					if (verInscripciones.getBoolean(6)) {
+						monitor = "Tardio";
+					} else {
+						monitor = "Temprano";
+					}
+					%> <%=monitor%>
+				</td>
+			</tr>
+		</table>
+		<form action="/Practica3/SVCancelarInscripcion" method="post">
+			<button type="submit">Cancelar Inscripcion</button>
+		</form>
+		<%
+		}
+
+		}
+		%>
+
+	</div>
 		<form action="/Practica3/mostrarCampamentosDisponibles" method="GET">
 			<div class="flex-container">
 
@@ -67,17 +114,17 @@ if (userBean.getEmail() == null || userBean.getEmail().isEmpty()) {
 		<form action="/Practica3/SVMostrarCampamentoCriterios" method="GET">
 			<h3>Buscar campamento por nivel educativo o minimo de plazas</h3>
 
-			<label for="nivelEducativo">Nivel Educativo:</label> <select
-				id="nivel" name="nivel">
-				<option value="" disabled selected>Selecciona una opción</option>
-				<option value="Infantil">Infantil</option>
+			<label for="nivelEducativo">Nivel Educativo:</label> 
+			<select name="nivelEducativo">
+				<option value="Infantil" selected>Infantil</option>
 				<option value="Juvenil">Juvenil</option>
 				<option value="Adolescente">Adolescente</option>
 			</select>
 			<button type="submit" class="pure-button">Buscar</button>
-			<br> <label for="plazas">Número mínimo de plazas
-				disponibles:</label> <input type="number" id="plazas" name="plazas"
-				placeholder="Ingresa el número mínimo de plazas">
+			</form>
+			<form action="/Practica3/SVMostrarCampamentoPlazaslibres" method="GET">
+			<br> <label for="plazas">Número mínimo de plazas disponibles:</label> 
+				<input type="number" name="plazaslibres" placeholder="Ingresa el número mínimo de plazas">
 
 			<button type="submit" class="pure-button">Buscar</button>
 		</form>
@@ -93,7 +140,7 @@ if (userBean.getEmail() == null || userBean.getEmail().isEmpty()) {
 		%>
 		<h2>
 			Campamentos disponibles con nivel educativo:
-			<%=request.getAttribute("nivelEducativo")%></h2>
+		<%=request.getAttribute("nivelEducativo")%></h2>
 
 		<%
 		while (verCampamentosCriterio.next()) {

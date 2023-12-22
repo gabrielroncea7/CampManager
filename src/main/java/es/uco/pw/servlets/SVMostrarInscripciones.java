@@ -48,7 +48,6 @@ public class SVMostrarInscripciones extends HttpServlet {
 			
 			RequestDispatcher rd = request.getRequestDispatcher("/mvc/view/asistenteView.jsp");         
 			rd.forward(request, response);
-			//response.sendRedirect("/mvc/view/asistenteView.jsp");
         }
 		else {
 			response.sendRedirect(request.getContextPath());

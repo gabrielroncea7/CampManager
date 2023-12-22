@@ -14,20 +14,16 @@ import es.uco.pw.business.Gestores.GestorCampamentos;
 import es.uco.pw.data.display.CustomerBean;
 
 /**
- * Servlet implementation class SVMostrarCampamentoCriterios
+ * Servlet implementation class SVMostrarCampamentoPlazaslibres
  */
-@WebServlet(name="SVMostrarCampamentoCriterios", urlPatterns = "/SVMostrarCampamentoCriterios")
-public class SVMostrarCampamentoCriterios extends HttpServlet {
+@WebServlet(name="SVMostrarCampamentoPlazaslibres", urlPatterns = "/SVMostrarCampamentoPlazaslibres")
+public class SVMostrarCampamentoPlazaslibres extends HttpServlet {
+	private static final long serialVersionUID = 1L;
        
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = -6014957908994715686L;
-
-	/**
      * @see HttpServlet#HttpServlet()
      */
-    public SVMostrarCampamentoCriterios() {
+    public SVMostrarCampamentoPlazaslibres() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,23 +32,20 @@ public class SVMostrarCampamentoCriterios extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        CustomerBean userBean = (CustomerBean) request.getSession().getAttribute("userBean");
-        if (userBean != null && userBean.getEmail() != null) {
-        	
-			String nivelEducativo = request.getParameter("nivelEducativo");
-			
-			ResultSet resultSet = GestorCampamentos.listarCampamentosNivelEducativo(nivelEducativo);
-			
-			request.setAttribute("verCampamentosCriterio", resultSet);
-			request.setAttribute("nivelEducativo", nivelEducativo);
-			RequestDispatcher rd = request.getRequestDispatcher("/mvc/view/asistenteView.jsp");
-			rd.forward(request, response);	 	
-        	
-        }
-		else {
-			response.sendRedirect(request.getContextPath());
-		}
-
+		// TODO Auto-generated method stub
+		 CustomerBean userBean = (CustomerBean) request.getSession().getAttribute("userBean");
+	 	   if (userBean != null && userBean.getEmail() != null) {
+			   
+			   int plazaslibres = Integer.parseInt(request.getParameter("plazaslibres"));
+				
+				ResultSet resultSet = GestorCampamentos.listarCampamentosPlazasLibres(plazaslibres);
+				
+				request.setAttribute("verCampamentosCriterio", resultSet);
+				request.setAttribute("plazaslibres", plazaslibres);
+				RequestDispatcher rd = request.getRequestDispatcher("/mvc/view/asistenteView.jsp");
+				rd.forward(request, response); 
+			   
+		   }
 	}
 
 	/**

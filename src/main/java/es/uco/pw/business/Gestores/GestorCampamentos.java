@@ -128,10 +128,15 @@ public class GestorCampamentos {
 		return AsociarDAO.mismoNivelEducativo(nombre_Actividad, idCampamento);
 	}
 	
-    public static ResultSet listarCampamentosCriterios(String nivelEductivo)
-    {
-    	return CampamentoDAO.listarCampamentosCriterios(nivelEductivo);
-    }
+    public static ResultSet listarCampamentosNivelEducativo(String nivelEductivo)
+{
+	return CampamentoDAO.listarCampamentosNivelEducativo(nivelEductivo);
+}
+
+public static ResultSet listarCampamentosPlazasLibres(int plazaslibres)
+{
+	return CampamentoDAO.listarCampamentosPlazasLibres(plazaslibres);
+}
 
 	public static boolean existeMonitorEspecial(int idMonitor) {
 		// TODO Auto-generated method stub
