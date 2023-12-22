@@ -22,17 +22,18 @@ if(userBean.getEmail()==null || userBean.getEmail().isEmpty())
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="<%=request.getContextPath() %>/css/admin.css">
-	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/formularios.css">
-	
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/css/admin.css">
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/formularios.css">
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/asociar.css">
     <title>Página de Administrador</title>
 </head>
 <body>
+<%@ include file="../../include/headerAdministrador.jsp" %>
 
 <div class="big-button-container">
-		<button type="button" class="big-button" onclick="mostrarFormulario('addMonitorActividad')">Asociar Monitor a Actividad</button>
-   		<button type="button" class="big-button" onclick="mostrarFormulario('addMonitorRCampamento')">Asociar Monitor responsable a campamentos</button>
-   		<button type="button" class="big-button" onclick="mostrarFormulario('addMonitorESCampamento')">Asociar Monitor de Atención Especial a campamento</button>
+		<button type="button" class="pure-button" onclick="mostrarFormulario('addMonitorActividad')">Asociar Monitor a Actividad</button>
+   		<button type="button" class="pure-button" onclick="mostrarFormulario('addMonitorRCampamento')">Asociar Monitor responsable a campamentos</button>
+   		<button type="button" class="pure-button" onclick="mostrarFormulario('addMonitorESCampamento')">Asociar Monitor de Atención Especial a campamento</button>
 </div>
 
 
@@ -138,16 +139,6 @@ if(userBean.getEmail()==null || userBean.getEmail().isEmpty())
 </div>
 
 
-
-<div class="button-container">
-    <form action="/Practica3/mvc/controller/logOutController.jsp" method="post">
-        <button type="submit">Desconectar</button>
-    </form>
-
-    <form action="/Practica3/mvc/view/ModificarDatosView.jsp" method="post">
-        <button type="submit">Modificar Datos</button>
-    </form>
-</div>
 <script src="<%=request.getContextPath() %>/js/mostrarFormulario.js"></script>
 </body>
 </html>
