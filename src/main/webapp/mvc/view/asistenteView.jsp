@@ -42,7 +42,7 @@ if (userBean.getEmail() == null || userBean.getEmail().isEmpty()) {
 				Fecha actual:
 				<%=java.time.LocalDate.now()%></h2>
 		</div>
-					<form action="/Practica3/SVMostrarInscripciones" method="GET">
+					<form action="/Practica3/mostrarInscripciones" method="GET">
 
 			<button type="submit" class="pure-button">Ver mis campamentos</button>
 		</form>
