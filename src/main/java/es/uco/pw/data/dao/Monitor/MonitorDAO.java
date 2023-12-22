@@ -120,5 +120,29 @@ public class MonitorDAO {
         return false;
     }
     
+    public static boolean existeMonitorEspecial(int id)
+    {
+        DBConnection dbConnection = new DBConnection();
+        Connection connection = dbConnection.getConnection();
+        // Realiza una consulta SQL para verificar si la asociación ya existe.
+        // Devuelve true si existe, false si no.
+        String existeMonitorESQuery = SQLQueries.getQuery("sql.existeMonitorES");
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(existeMonitorESQuery)) {
+            preparedStatement.setInt(1, id);
+
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                int count = resultSet.getInt(1);
+                return count > 0;  // Si count > 0, significa que el monitor existe
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    
    
 }

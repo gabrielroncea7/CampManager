@@ -159,15 +159,36 @@ public class CampamentoDAO {
         return false;
     }
     
-    public static ResultSet listarCampamentosCriterios(String nivelEductivo) {
+    public static ResultSet listarCampamentosNivelEducativo(String nivelEductivo) {
         DBConnection dbConnection = new DBConnection();
         Connection connection = dbConnection.getConnection();
 
-        String listarCampamentosCriteriosQuery = SQLQueries.getQuery("sql.listarCampamentosCriterios");
+        String listarCampamentosNivelEducativoQuery = SQLQueries.getQuery("sql.listarCampamentosNivelEducativo");
 
         try {
-        	PreparedStatement preparedStatement = connection.prepareStatement(listarCampamentosCriteriosQuery);
+        	PreparedStatement preparedStatement = connection.prepareStatement(listarCampamentosNivelEducativoQuery);
             preparedStatement.setString(1, nivelEductivo);
+            
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+                 return resultSet;  	
+
+           
+        	} catch (SQLException e) {
+            e.printStackTrace();
+            return null; // En caso de error, devuelve null
+        }
+    }
+    
+    public static ResultSet listarCampamentosPlazasLibres(int plazaslibres) {
+        DBConnection dbConnection = new DBConnection();
+        Connection connection = dbConnection.getConnection();
+
+        String listarCampamentosPlazasLibresQuery = SQLQueries.getQuery("sql.listarCampamentosPlazasLibres");
+
+        try {
+        	PreparedStatement preparedStatement = connection.prepareStatement(listarCampamentosPlazasLibresQuery);
+            preparedStatement.setInt(1, plazaslibres);
             
             ResultSet resultSet = preparedStatement.executeQuery();
 
