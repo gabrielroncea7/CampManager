@@ -14,7 +14,7 @@ import es.uco.pw.data.display.CustomerBean;
 /**
  * Servlet implementation class SVAsociarMonitorRCampamento
  */
-@WebServlet("/SVAsociarMonitorRCampamento")
+@WebServlet(name = "asociarMonitorRCampamento", urlPatterns = "/asociarMonitorRCampamento")
 public class SVAsociarMonitorRCampamento extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
