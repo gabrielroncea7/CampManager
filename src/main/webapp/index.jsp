@@ -25,7 +25,7 @@
 			<%
 			    }
 			%>
-            <h2>Iniciar Sesión</h2>
+            <h2>SUMMER CAMP</h2>
             <div class="input-container">
                 <i class="far fa-envelope"></i>
                 <input type="email" id="email" name="email" placeholder="Correo" required>

@@ -264,8 +264,9 @@ public class InscripcionDAO {
 	    
 	   String listarInscripcionesAsistenteQuery = SQLQueries.getQuery("sql.listarInscripcionesAsistente");
 
-    try (PreparedStatement preparedStatement = connection.prepareStatement(listarInscripcionesAsistenteQuery)) {
-        preparedStatement.setInt(1, Id_asistente);
+    try  {
+    	PreparedStatement preparedStatement = connection.prepareStatement(listarInscripcionesAsistenteQuery);
+    	preparedStatement.setInt(1, Id_asistente);
 
         ResultSet resultSet = preparedStatement.executeQuery();
         

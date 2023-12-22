@@ -38,15 +38,14 @@ public class SVMostrarInscripciones extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         CustomerBean userBean = (CustomerBean) request.getSession().getAttribute("userBean");
+        RequestDispatcher rd;
         if (userBean != null && userBean.getEmail() != null) {
 
         	int idAsistente = GestorUsuarios.obtenerAsistenteUsuario(userBean.getEmail());
 			ResultSet resultSet = GestorInscripciones.listarInscripcionesAsistente(idAsistente);
 			
-			request.setAttribute("verInscripciones", resultSet);
-
-			
-			RequestDispatcher rd = request.getRequestDispatcher("/mvc/view/asistenteView.jsp");         
+			request.setAttribute("verInscripciones", resultSet);	
+			rd = request.getRequestDispatcher("/mvc/view/asistenteView.jsp");
 			rd.forward(request, response);
         }
 		else {
