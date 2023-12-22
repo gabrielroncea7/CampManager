@@ -35,7 +35,7 @@ public class GestorInscripciones {
 		return InscripcionDAO.ComprobarInscripcion(Id_asistente, Id_Campamento);
 	}
 
-	public static String listarInscripcionesAsistente(int Id_asistente) {
+	public static ResultSet listarInscripcionesAsistente(int Id_asistente) {
 		return InscripcionDAO.listarInscripcionesAsistente(Id_asistente);
 	}
 

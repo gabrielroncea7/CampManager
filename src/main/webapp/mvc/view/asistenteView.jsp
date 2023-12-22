@@ -28,9 +28,6 @@ if (userBean.getEmail() == null || userBean.getEmail().isEmpty()) {
 </head>
 <body>
 <%@ include file="../../include/headerAsistente.jsp" %>
-
-
-	<div>
 		<%
 		ResultSet verCampamentos = (ResultSet) request.getAttribute("verCampamentos");
 		if (verCampamentos != null) {
@@ -90,25 +87,46 @@ if (userBean.getEmail() == null || userBean.getEmail().isEmpty()) {
 
 		}
 		%>
-<%----%>
-
-
-
-<%--LO ULTIMO--%>
 	</div>
-
-	<h2>Campamentos Inscritos:</h2>
-	<ul>
+	<br><br><br>
+		<div>
+			<h2>Bienvenido, <%= userBean.getNombre()%></h2>
+			
+			<h2>Fecha actual: <%= java.time.LocalDate.now()%></h2>
+		</div>
+		<div>
+		<div class="centrado">
+		<h2>Campamentos en los que estas inscrito:</h2>
+		<form action="/Practica3/mostrarInscripciones" method="GET">
+		<div class="flex-item">
+			<button class="pure-button" type="submit">Mostrar</button>
+		</div>
+		</form>
 		<%
-		int idAsistente = GestorUsuarios.obtenerAsistenteUsuario(userBean.getEmail());
-		%>
-		<%
-		String Inscripciones = GestorInscripciones.listarInscripcionesAsistente(idAsistente);
-		%>
+		ResultSet verInscripciones = (ResultSet) request.getAttribute("verInscripciones");
+		if (verInscripciones != null) {
 
-		<%=Inscripciones%>
-	</ul>
-	
+		while (verInscripciones.next()) {
+		%>
+		<table id="campamentos-list">
+			<tr>
+				<th>Id de campamento</th>
+				<th>Fecha de inscripcion</th>
+				<th>Precio</th>
+			</tr>
+			<tr>
+				<td><%=verInscripciones.getInt(1)%></td>
+				<td><%=verInscripciones.getString(2)%></td>
+				<td><%=verInscripciones.getString(3)%></td>
+			<tr>
+			</tr>
+		</table>
+		<%
+		}
+
+		}
+		%>
+	</div>
 
 	<!-- Botones -->
 	<div class="centrado">
@@ -116,7 +134,7 @@ if (userBean.getEmail() == null || userBean.getEmail().isEmpty()) {
 		<form action="/Practica3/mostrarCampamentosDisponibles" method="GET">
 			<div class="flex-container">
 
-				<h3>Opcion 1: </h2>
+				<h3>Buscar campamento entre fechas</h3>
 					<label for="fechaInicio">Fecha Inicio</label> <input type="date"
 						id="fechaInicio" name="fechaInicio" required>
 
@@ -133,7 +151,7 @@ if (userBean.getEmail() == null || userBean.getEmail().isEmpty()) {
 		</form><br>
 		
 	<form action="/Practica3/SVMostrarCampamentoCriterios" method="GET">
-<h3>Buscar Campamento</h2>
+<h3>Buscar campamento por nivel educativo o minimo de plazas</h3>
         
         <label for="nivelEducativo">Nivel Educativo:</label>
         <select id="nivel" name="nivel">
@@ -204,10 +222,6 @@ if (userBean.getEmail() == null || userBean.getEmail().isEmpty()) {
 		%>
 
 	</div>	
-	
-	
-	
-	
 	
 </body>
 </html>

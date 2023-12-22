@@ -5,7 +5,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="css/styles.css"></head>
+	<link rel="stylesheet" href="css/asistente.css"></head>
 	<title>PR&Aacute;CTICA 3</title>
 </head>
 <body>
