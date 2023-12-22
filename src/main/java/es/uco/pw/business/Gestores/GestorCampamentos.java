@@ -73,8 +73,8 @@ public class GestorCampamentos {
 		return MonitorDAO.listarMonitoresES();
     }
 
-    public static boolean existeMonitor(String nombre, String apellido) {
-    	return MonitorDAO.existeMonitor(nombre, apellido);
+    public static boolean existeMonitor(int id) {
+    	return MonitorDAO.existeMonitor(id);
     }
 
     //Asociar

@@ -43,17 +43,17 @@ if(userBean.getEmail()==null || userBean.getEmail().isEmpty())
 <div class="form-container" id="addMonitorAECampamento" style="display: none;"></div>
 
 
-                    <%-- Muestra el mensaje si está presente --%>
-			<%
-			    String msg =(String)request.getAttribute("msg");
-			    if (msg != null && !msg.isEmpty()) {
-			%>
-				<div class="form-container">
-			    <h2><%= msg %></h2>
-			    </div>
-			<%
-			    }
-			%>
+        		<%
+		String msg = (String) session.getAttribute("msg");
+		session.removeAttribute("msg"); // Elimina el mensaje de la sesión después de mostrarlo
+		if (msg != null && !msg.isEmpty()) {
+		%>
+		    <div class="form-container">
+		        <h2><%= msg %></h2>
+		    </div>
+		<%
+		}
+		%>
 			
 <div class="table-container">
     <div class="actividades-container">

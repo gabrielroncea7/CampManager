@@ -96,7 +96,7 @@ public class MonitorDAO {
      * @param apellido Los apellidos del monitor.
      * @return         True si el monitor existe, false en caso contrario.
      */
-    public static boolean existeMonitor(String nombre, String apellido)
+    public static boolean existeMonitor(int id)
     {
         DBConnection dbConnection = new DBConnection();
         Connection connection = dbConnection.getConnection();
@@ -105,8 +105,8 @@ public class MonitorDAO {
         String existeMonitorQuery = SQLQueries.getQuery("sql.existeMonitor");
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(existeMonitorQuery)) {
-            preparedStatement.setString(1, nombre);
-            preparedStatement.setString(2, apellido);
+            preparedStatement.setInt(1, id);
+
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
