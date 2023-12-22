@@ -3,7 +3,7 @@
 <header class="navbar">
     <div class="logo">
         <a  href="/Practica3/mvc/view/adminView.jsp" class="boton-header1">
-        <i class="fas fa-home">Summer Camp</i></a>
+        <i class="fas fa-home">Summer Camp</i> </a>
     </div>
 
     <div class="logout-button">
