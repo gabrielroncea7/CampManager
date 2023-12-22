@@ -7,6 +7,10 @@
 <jsp:useBean id="userBean" scope="session" class="es.uco.pw.data.display.CustomerBean"></jsp:useBean>
 
 <%
+/**
+ * Página de controlador para la actualización de datos de usuario.
+ * Verifica la sesión del usuario antes de realizar la actualización.
+ */
 if(userBean.getEmail()==null || userBean.getEmail().isEmpty())
 {
 	response.sendRedirect("/Practica3" + "?message=" + URLEncoder.encode("Inicia sesión o Registrate", "UTF-8"));	

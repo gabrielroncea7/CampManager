@@ -12,6 +12,9 @@
 <form action="../controller/controladorRegistro.jsp" method="POST" class="register-form">
     <%-- Muestra el mensaje si está presente --%>
     <%
+    /**
+     * Muestra el mensaje de registro si está presente.
+     */
         String message = request.getParameter("message");
         if (message != null && !message.isEmpty()) {
     %>

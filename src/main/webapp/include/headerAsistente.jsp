@@ -1,3 +1,8 @@
+/**
+ * Este fichero contiene el codigo html que tendra la pagina de asistente para generar el header y el footer.
+ * Se incluira este fichero al view que nos haga falta.
+ */
+
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
  <link rel="stylesheet" href="<%=request.getContextPath() %>/css/asistente.css">
 <header class="navbar">

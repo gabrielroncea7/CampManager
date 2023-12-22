@@ -18,6 +18,9 @@
         
                     <%-- Muestra el mensaje si está presente --%>
 			<%
+            /**
+             * Muestra el mensaje de inicio de sesión si está presente.
+             */
 			    String message = request.getParameter("message");
 			    if (message != null && !message.isEmpty()) {
 			%>

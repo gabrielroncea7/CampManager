@@ -7,6 +7,9 @@
 <jsp:useBean id="userBean" scope="session" class="es.uco.pw.data.display.CustomerBean"></jsp:useBean>
 
 <%
+/**
+ * Página de controlador para la autenticación del usuario.
+ */
 String nextPage = "";
 String mensajeNextPage = "";
 	

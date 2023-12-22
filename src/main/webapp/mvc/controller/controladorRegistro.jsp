@@ -8,6 +8,9 @@
 <jsp:useBean id="userBean" scope="session" class="es.uco.pw.data.display.CustomerBean"></jsp:useBean>
 
 <%
+/**
+ * Página de controlador para la creación de usuarios.
+ */
 String nextPage = "";
 String mensajeNextPage = "";
 

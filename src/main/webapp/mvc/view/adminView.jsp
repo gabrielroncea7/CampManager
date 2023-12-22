@@ -9,6 +9,9 @@
 <jsp:useBean id="userBean" scope="session" class="es.uco.pw.data.display.CustomerBean"></jsp:useBean>
 
 <%
+/**
+ * Verifica si el usuario ha iniciado sesión. Si no, redirige a la página de inicio de sesión o registro.
+ */
 if(userBean.getEmail()==null || userBean.getEmail().isEmpty())
 {
 	response.sendRedirect("/Practica3" + "?message=" + URLEncoder.encode("Inicia sesión o Registrate", "UTF-8"));	
@@ -26,6 +29,9 @@ if(userBean.getEmail()==null || userBean.getEmail().isEmpty())
 <body>
 <%@ include file="../../include/headerAdministrador.jsp" %>
 <%
+/**
+ * ResultSets para manipular datos de campamentos y asistentes.
+ */
 ResultSet resultSet = null;
 ResultSet resultSet2 = null;
 Campamento_DTO campamento = new Campamento_DTO();
@@ -45,6 +51,9 @@ Asistente_DTO asistente = new Asistente_DTO();
 		</div>
                     <%-- Muestra el mensaje si está presente --%>
 			<%
+			/**
+			 * Muestra un mensaje si está presente en los atributos de la solicitud.
+			 */
 			
 			    String msg =(String)request.getAttribute("msg");
 			    if (msg != null && !msg.isEmpty()) {
@@ -58,6 +67,9 @@ Asistente_DTO asistente = new Asistente_DTO();
 	
     <h1>Listado de Campamentos</h1>
 	<%
+	/**
+	 * Obtiene y muestra la lista de campamentos junto con los asistentes.
+	 */
 		resultSet = GestorCampamentos.listarCampamentos();
 		if(resultSet != null)
 		{
