@@ -36,7 +36,7 @@ else
     	}
     	else
     	{
-       		 nextPage = "../view/asistenteView.jsp";    		
+       		 nextPage = "/Practica3/mostrarInscripciones";    		
     	}
     	
     }

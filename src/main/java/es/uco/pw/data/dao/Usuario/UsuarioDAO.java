@@ -169,8 +169,9 @@ public class UsuarioDAO {
         // Devuelve true si existe, false si no.
         String obtenerAsistenteUsuarioQuery = SQLQueries.getQuery("sql.obtenerAsistenteUsuario");
 
-        try (PreparedStatement preparedStatement = connection.prepareStatement(obtenerAsistenteUsuarioQuery)) {
-            preparedStatement.setString(1, emailUser);
+        try {
+        	PreparedStatement preparedStatement = connection.prepareStatement(obtenerAsistenteUsuarioQuery);
+        	preparedStatement.setString(1, emailUser);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {

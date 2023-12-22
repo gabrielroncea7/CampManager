@@ -53,7 +53,7 @@ public class SVCrearInscripcion extends HttpServlet {
 			request.setAttribute("precio", precio);
 
             if(GestorInscripciones.ComprobarInscripcion(idAsistente, idCampamento)){
-            	response.sendRedirect("mvc/view/asistenteView.jsp");             	
+    			response.sendRedirect(request.getContextPath() + "/mostrarInscripciones");
             }else {
     			RequestDispatcher rd = request.getRequestDispatcher("/mvc/view/confirmacionInscripcionView.jsp");
     			rd.forward(request, response);           	

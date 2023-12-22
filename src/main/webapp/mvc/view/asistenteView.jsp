@@ -41,12 +41,7 @@ if (userBean.getEmail() == null || userBean.getEmail().isEmpty()) {
 			<h2>
 				Fecha actual:
 				<%=java.time.LocalDate.now()%></h2>
-		</div>
-					<form action="/Practica3/mostrarInscripciones" method="GET">
 
-			<button type="submit" class="pure-button">Ver mis campamentos</button>
-		</form>
-			<div>
 		<%
 		ResultSet verInscripciones = (ResultSet) request.getAttribute("verInscripciones");
 		if (verInscripciones != null) {
@@ -124,7 +119,7 @@ if (userBean.getEmail() == null || userBean.getEmail().isEmpty()) {
 			</form>
 			<form action="/Practica3/SVMostrarCampamentoPlazaslibres" method="GET">
 			<br> <label for="plazas">Número mínimo de plazas disponibles:</label> 
-				<input type="number" name="plazaslibres" placeholder="Ingresa el número mínimo de plazas">
+				<input type="number" name="plazaslibres" placeholder="Ingresa el número mínimo de plazas" required min="0">
 
 			<button type="submit" class="pure-button">Buscar</button>
 		</form>
@@ -174,9 +169,16 @@ if (userBean.getEmail() == null || userBean.getEmail().isEmpty()) {
 				</td>
 			</tr>
 		</table>
-		<form action="/Practica3/SVInscribirseCampamento" method="post">
-			<button type="submit">Inscribirse</button>
-		</form>
+		<form action="/Practica3/crearInscripcion" method="GET">
+						<div class="flex-item">
+							<input type="hidden" id="idCampamento" name="idCampamento"
+								value="<%=verCampamentosCriterio.getInt(1)%>"> <label
+								for="inscripcionCompleta">¿Desea una inscripcion
+								completa?</label> <input type="checkbox" id="inscripcionCompleta"
+								name="inscripcionCompleta" value=true>
+							<button type="submit">Inscribirse</button>
+						</div>
+					</form>
 		<%
 		}
 

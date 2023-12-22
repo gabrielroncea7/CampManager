@@ -48,7 +48,7 @@ public class SVCrearInscripcionConfirmado extends HttpServlet {
 
             GestorInscripciones.crearInscripcion(idAsistente, idCampamento, precio);
             
-            response.sendRedirect("mvc/view/asistenteView.jsp");
+			response.sendRedirect(request.getContextPath() + "/mostrarInscripciones");
         }
 		else {
 			response.sendRedirect(request.getContextPath());
